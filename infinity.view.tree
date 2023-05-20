@@ -10,7 +10,7 @@ $koplenov_infinity $mol_page
 				before* <= before* /
 				after* <= after* /
 				Row* <= Gallery* $mol_gallery
-					items <= Pics*
+					items <= Pics* /
 	Pic* $mol_image
 		natural_width 124
 		natural_height 124
