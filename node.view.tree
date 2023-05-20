@@ -102,6 +102,21 @@ $mol_check $mol_button_minor
 				sub /
 					<= title \
 
+$mol_check_list $mol_view
+	Option* $mol_check
+		checked?val <=> option_checked*?val false
+		label <= option_label* /
+			<= option_title* \
+		enabled <= option_enabled* <= enabled true
+		hint <= option_hint* \
+		minimal_height 24
+	options *
+	keys /string
+	sub <= items /$mol_check
+
+$mol_switch $mol_check_list
+	value?val \
+
 $mol_check_icon $mol_check
 
 $mol_svg $mol_view
@@ -178,6 +193,11 @@ $koplenov_infinity $mol_page
 	plugins /
 		<= Themme $mol_theme_auto
 	tools /
+		<= Formats $mol_switch
+			value?val <=> color?val \txt2img
+			options <= formats *
+				txt2img \text to img
+				img2img \img to img
 		<= Lighter $mol_lights_toggle
 	body /
 		<= Scroll $mol_scroll sub /
@@ -185,6 +205,8 @@ $koplenov_infinity $mol_page
 				before* <= before* /
 				after* <= after* /
 				Row* <= Gallery* $mol_gallery
+					minimal_width 400
+					minimal_height 500
 					items <= Pics* /
 	Pic* $mol_image
 		natural_width 124

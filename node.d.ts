@@ -1296,6 +1296,63 @@ declare namespace $.$$ {
 }
 
 declare namespace $ {
+    class $mol_check_list extends $mol_view {
+        Option(id: any): $$.$mol_check;
+        options(): Record<string, any>;
+        keys(): readonly string[];
+        sub(): readonly $mol_check[];
+        option_checked(id: any, val?: any): boolean;
+        option_title(id: any): string;
+        option_label(id: any): readonly any[];
+        enabled(): boolean;
+        option_enabled(id: any): boolean;
+        option_hint(id: any): string;
+        items(): readonly $mol_check[];
+    }
+}
+
+declare namespace $.$$ {
+    class $mol_check_list extends $.$mol_check_list {
+        options(): {
+            [key: string]: string;
+        };
+        keys(): readonly string[];
+        items(): $mol_check[];
+        option_title(key: string): string;
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+    class $mol_switch extends $mol_check_list {
+        value(val?: any): string;
+    }
+}
+
+declare namespace $ {
+    class $mol_state_session<Value> extends $mol_object {
+        static 'native()': Pick<Storage, 'getItem' | 'setItem' | 'removeItem'>;
+        static native(): Storage | {
+            getItem(key: string): any;
+            setItem(key: string, value: string): void;
+            removeItem(key: string): void;
+        };
+        static value<Value>(key: string, next?: Value): Value;
+        prefix(): string;
+        value(key: string, next?: Value): Value;
+    }
+}
+
+declare namespace $.$$ {
+    class $mol_switch extends $.$mol_switch {
+        value(next?: any): any;
+        option_checked(key: string, next?: boolean): boolean;
+    }
+}
+
+declare namespace $ {
     class $mol_check_icon extends $mol_check {
     }
 }
@@ -1616,6 +1673,9 @@ declare namespace $ {
         body(): readonly any[];
         Pic(id: any): $$.$mol_image;
         Themme(): $$.$mol_theme_auto;
+        color(val?: any): string;
+        formats(): Record<string, any>;
+        Formats(): $$.$mol_switch;
         Lighter(): $$.$mol_lights_toggle;
         before(id: any): readonly any[];
         after(id: any): readonly any[];
@@ -1638,6 +1698,9 @@ declare namespace $.$$ {
         image(data: Record): string;
     }
     export {};
+}
+
+declare namespace $ {
 }
 
 export = $;
