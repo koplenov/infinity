@@ -12,10 +12,10 @@ $koplenov_infinity_marker $mol_page
 			before* <= before* /
 			after* <= after* /
 			Row* <= Gallery* $mol_gallery
-				minimal_width 400
-				minimal_height 500
 				items <= Pics* /
 	Pic* $mol_image
+		minimal_width 124
+		minimal_height 124
 		natural_width 124
 		natural_height 124
 		uri <= image* \
