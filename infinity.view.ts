@@ -8,9 +8,9 @@ namespace $.$$ {
 		// отображаем Row
 		@$mol_mem_key
 		Pics( index: any ) {
-			let page_size = this.chunk_size()
-			let page = Math.floor( index / page_size )
-			return this.links( page ).map( data => this.Pic( data ) )// [this.Pic(this.links( page )[ index % page_size ])]
+			// let page_size = this.chunk_size()
+			// let page = Math.floor( index / page_size )
+			return this.links( index ).map( data => this.Pic( data ) )// [this.Pic(this.links( page )[ index % page_size ])]
 		}
 		// получаем страницу данных
 		@$mol_mem_key
