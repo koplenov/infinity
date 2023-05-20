@@ -1,0 +1,21 @@
+$koplenov_infinity_marker $mol_page
+	chunk_size 30
+	tools /
+		<= Formats $mol_switch
+			value?val <=> color?val \txt2img
+			options <= formats *
+				txt2img \text to img
+				img2img \img to img
+		<= add_tools null
+	body /
+		<= List $mol_infinite
+			before* <= before* /
+			after* <= after* /
+			Row* <= Gallery* $mol_gallery
+				minimal_width 400
+				minimal_height 500
+				items <= Pics* /
+	Pic* $mol_image
+		natural_width 124
+		natural_height 124
+		uri <= image* \

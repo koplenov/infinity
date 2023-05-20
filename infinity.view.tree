@@ -1,24 +1,7 @@
-$koplenov_infinity $mol_page
-	chunk_size 20
-	plugins /
-		<= Themme $mol_theme_auto
-	tools /
-		<= Formats $mol_switch
-			value?val <=> color?val \txt2img
-			options <= formats *
-				txt2img \text to img
-				img2img \img to img
-		<= Lighter $mol_lights_toggle
-	body /
-		<= Scroll $mol_scroll sub /
-			<= List $mol_infinite
-				before* <= before* /
-				after* <= after* /
-				Row* <= Gallery* $mol_gallery
-					minimal_width 400
-					minimal_height 500
-					items <= Pics* /
-	Pic* $mol_image
-		natural_width 124
-		natural_height 124
-		uri <= image* \
+$koplenov_infinity $mol_book2_catalog
+	plugins / <= Themme $mol_theme_auto
+	menu_tools / <= Lighter $mol_lights_toggle
+	menu_title \Img
+	spreads *
+		marker <= Marker $koplenov_infinity_marker
+			add_tools <= Spread_close
