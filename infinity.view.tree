@@ -3,6 +3,11 @@ $koplenov_infinity $mol_page
 	plugins /
 		<= Themme $mol_theme_auto
 	tools /
+		<= Formats $mol_switch
+			value?val <=> color?val \txt2img
+			options <= formats *
+				txt2img \text to img
+				img2img \img to img
 		<= Lighter $mol_lights_toggle
 	body /
 		<= Scroll $mol_scroll sub /
@@ -10,6 +15,8 @@ $koplenov_infinity $mol_page
 				before* <= before* /
 				after* <= after* /
 				Row* <= Gallery* $mol_gallery
+					minimal_width 400
+					minimal_height 500
 					items <= Pics* /
 	Pic* $mol_image
 		natural_width 124

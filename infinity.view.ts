@@ -10,12 +10,12 @@ namespace $.$$ {
 		Pics( index: any ) {
 			// let page_size = this.chunk_size()
 			// let page = Math.floor( index / page_size )
-			return this.links( index ).map( data => this.Pic( data ) )// [this.Pic(this.links( page )[ index % page_size ])]
+			return this.links( index ).reverse().map( data => this.Pic( data ) )// [this.Pic(this.links( page )[ index % page_size ])]
 		}
 		// получаем страницу данных
 		@$mol_mem_key
 		links( page: number ) {
-			const uri = `https://ai.img-converter.com/report/all?type=last&page=${ page || 1 }&limit=${ this.chunk_size() }&query=`
+			const uri = `https://ai.img-converter.com/report/${ this.Formats().value() }?page=${ page || 1 }&count=${ this.chunk_size() }&query=`
 			return $mol_fetch.json( uri ) as Record[]
 		}
 		// ээ, шото необходимое для работы подзагрузки
