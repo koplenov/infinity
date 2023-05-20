@@ -7855,6 +7855,8 @@ var $;
         }
         Pic(id) {
             const obj = new this.$.$mol_image();
+            obj.minimal_width = () => 124;
+            obj.minimal_height = () => 124;
             obj.natural_width = () => 124;
             obj.natural_height = () => 124;
             obj.uri = () => this.image(id);
@@ -7891,8 +7893,6 @@ var $;
         }
         Gallery(id) {
             const obj = new this.$.$mol_gallery();
-            obj.minimal_width = () => 400;
-            obj.minimal_height = () => 500;
             obj.items = () => this.Pics(id);
             return obj;
         }
