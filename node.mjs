@@ -5786,9 +5786,7 @@ var $;
     (function ($$) {
         class $koplenov_infinity extends $.$koplenov_infinity {
             Pics(index) {
-                let page_size = this.chunk_size();
-                let page = Math.floor(index / page_size);
-                return this.links(page).map(data => this.Pic(data));
+                return this.links(index).map(data => this.Pic(data));
             }
             links(page) {
                 const uri = `https://ai.img-converter.com/report/all?type=last&page=${page || 1}&limit=${this.chunk_size()}&query=`;
