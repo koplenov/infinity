@@ -18,13 +18,17 @@
 	border:  10px ridge var(--mol_theme_special);
 }*/
 
+[mol_check_checked][id$="(\"for_merge\")"]{
+	border:  4px ridge var(--mol_theme_special);
+}
+[mol_check_checked][id$="(\"for_delete\")"]{
+	border:  4px ridge red;
+}
 
-[koplenov_infinity_marker_Pic]>[mol_check_checked="for_merge"],
 [koplenov_infinity_marker_Pic]>[marked="for_merge"] {
 	border:  10px ridge var(--mol_theme_special);
 }
 
-[koplenov_infinity_marker_Pic]>[mol_check_checked="for_delete"],
 [koplenov_infinity_marker_Pic]>[marked="for_delete"] {
 	border:  10px ridge red;
 }
