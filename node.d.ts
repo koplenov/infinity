@@ -2159,11 +2159,15 @@ declare namespace $ {
         tools(): readonly any[];
         body(): readonly any[];
         Pic(id: any): $$.$mol_image;
-        download(next?: any): any;
-        Download(): $mol_button_minor;
         add_tools(): any;
-        Pics(): any;
-        Gallery(): $$.$mol_gallery;
+        download_merge(next?: any): any;
+        Download_merge(): $mol_button_minor;
+        Pics_merge(): any;
+        Gallery_merge(): $$.$mol_gallery;
+        download_delete(next?: any): any;
+        Download_delete(): $mol_button_minor;
+        Pics_delete(): any;
+        Gallery_delete(): $$.$mol_gallery;
         image(id: any): string;
     }
 }
@@ -2171,9 +2175,14 @@ declare namespace $ {
 declare namespace $.$$ {
     class $koplenov_infinity_preview extends $.$koplenov_infinity_preview {
         pics(): any[];
-        Pics(): $mol_image[];
-        image(record: any): any;
-        download(): void;
+        pics_for_merge(): any[];
+        Pics_merge(): $mol_image[];
+        pics_for_delete(): any[];
+        Pics_delete(): $mol_image[];
+        image(seo_name: any): any;
+        download_merge(): void;
+        download_delete(): void;
+        download(filename: string, data: any): void;
     }
 }
 
@@ -2214,6 +2223,125 @@ declare namespace $ {
 }
 
 declare namespace $ {
+}
+
+declare namespace $ {
+    class $mol_keyboard_state extends $mol_plugin {
+        event(): Record<string, any>;
+        key(): Record<string, any>;
+        down(next?: any): any;
+        up(next?: any): any;
+    }
+}
+
+declare namespace $.$$ {
+    class $mol_keyboard_state extends $.$mol_keyboard_state {
+        key(): {
+            [x: number]: ((state?: boolean) => boolean) | undefined;
+            readonly backspace?: ((state?: boolean) => boolean) | undefined;
+            readonly tab?: ((state?: boolean) => boolean) | undefined;
+            readonly enter?: ((state?: boolean) => boolean) | undefined;
+            readonly shift?: ((state?: boolean) => boolean) | undefined;
+            readonly ctrl?: ((state?: boolean) => boolean) | undefined;
+            readonly alt?: ((state?: boolean) => boolean) | undefined;
+            readonly pause?: ((state?: boolean) => boolean) | undefined;
+            readonly capsLock?: ((state?: boolean) => boolean) | undefined;
+            readonly escape?: ((state?: boolean) => boolean) | undefined;
+            readonly space?: ((state?: boolean) => boolean) | undefined;
+            readonly pageUp?: ((state?: boolean) => boolean) | undefined;
+            readonly pageDown?: ((state?: boolean) => boolean) | undefined;
+            readonly end?: ((state?: boolean) => boolean) | undefined;
+            readonly home?: ((state?: boolean) => boolean) | undefined;
+            readonly left?: ((state?: boolean) => boolean) | undefined;
+            readonly up?: ((state?: boolean) => boolean) | undefined;
+            readonly right?: ((state?: boolean) => boolean) | undefined;
+            readonly down?: ((state?: boolean) => boolean) | undefined;
+            readonly insert?: ((state?: boolean) => boolean) | undefined;
+            readonly delete?: ((state?: boolean) => boolean) | undefined;
+            readonly key0?: ((state?: boolean) => boolean) | undefined;
+            readonly key1?: ((state?: boolean) => boolean) | undefined;
+            readonly key2?: ((state?: boolean) => boolean) | undefined;
+            readonly key3?: ((state?: boolean) => boolean) | undefined;
+            readonly key4?: ((state?: boolean) => boolean) | undefined;
+            readonly key5?: ((state?: boolean) => boolean) | undefined;
+            readonly key6?: ((state?: boolean) => boolean) | undefined;
+            readonly key7?: ((state?: boolean) => boolean) | undefined;
+            readonly key8?: ((state?: boolean) => boolean) | undefined;
+            readonly key9?: ((state?: boolean) => boolean) | undefined;
+            readonly A?: ((state?: boolean) => boolean) | undefined;
+            readonly B?: ((state?: boolean) => boolean) | undefined;
+            readonly C?: ((state?: boolean) => boolean) | undefined;
+            readonly D?: ((state?: boolean) => boolean) | undefined;
+            readonly E?: ((state?: boolean) => boolean) | undefined;
+            readonly F?: ((state?: boolean) => boolean) | undefined;
+            readonly G?: ((state?: boolean) => boolean) | undefined;
+            readonly H?: ((state?: boolean) => boolean) | undefined;
+            readonly I?: ((state?: boolean) => boolean) | undefined;
+            readonly J?: ((state?: boolean) => boolean) | undefined;
+            readonly K?: ((state?: boolean) => boolean) | undefined;
+            readonly L?: ((state?: boolean) => boolean) | undefined;
+            readonly M?: ((state?: boolean) => boolean) | undefined;
+            readonly N?: ((state?: boolean) => boolean) | undefined;
+            readonly O?: ((state?: boolean) => boolean) | undefined;
+            readonly P?: ((state?: boolean) => boolean) | undefined;
+            readonly Q?: ((state?: boolean) => boolean) | undefined;
+            readonly R?: ((state?: boolean) => boolean) | undefined;
+            readonly S?: ((state?: boolean) => boolean) | undefined;
+            readonly T?: ((state?: boolean) => boolean) | undefined;
+            readonly U?: ((state?: boolean) => boolean) | undefined;
+            readonly V?: ((state?: boolean) => boolean) | undefined;
+            readonly W?: ((state?: boolean) => boolean) | undefined;
+            readonly X?: ((state?: boolean) => boolean) | undefined;
+            readonly Y?: ((state?: boolean) => boolean) | undefined;
+            readonly Z?: ((state?: boolean) => boolean) | undefined;
+            readonly metaLeft?: ((state?: boolean) => boolean) | undefined;
+            readonly metaRight?: ((state?: boolean) => boolean) | undefined;
+            readonly select?: ((state?: boolean) => boolean) | undefined;
+            readonly numpad0?: ((state?: boolean) => boolean) | undefined;
+            readonly numpad1?: ((state?: boolean) => boolean) | undefined;
+            readonly numpad2?: ((state?: boolean) => boolean) | undefined;
+            readonly numpad3?: ((state?: boolean) => boolean) | undefined;
+            readonly numpad4?: ((state?: boolean) => boolean) | undefined;
+            readonly numpad5?: ((state?: boolean) => boolean) | undefined;
+            readonly numpad6?: ((state?: boolean) => boolean) | undefined;
+            readonly numpad7?: ((state?: boolean) => boolean) | undefined;
+            readonly numpad8?: ((state?: boolean) => boolean) | undefined;
+            readonly numpad9?: ((state?: boolean) => boolean) | undefined;
+            readonly multiply?: ((state?: boolean) => boolean) | undefined;
+            readonly add?: ((state?: boolean) => boolean) | undefined;
+            readonly subtract?: ((state?: boolean) => boolean) | undefined;
+            readonly decimal?: ((state?: boolean) => boolean) | undefined;
+            readonly divide?: ((state?: boolean) => boolean) | undefined;
+            readonly F1?: ((state?: boolean) => boolean) | undefined;
+            readonly F2?: ((state?: boolean) => boolean) | undefined;
+            readonly F3?: ((state?: boolean) => boolean) | undefined;
+            readonly F4?: ((state?: boolean) => boolean) | undefined;
+            readonly F5?: ((state?: boolean) => boolean) | undefined;
+            readonly F6?: ((state?: boolean) => boolean) | undefined;
+            readonly F7?: ((state?: boolean) => boolean) | undefined;
+            readonly F8?: ((state?: boolean) => boolean) | undefined;
+            readonly F9?: ((state?: boolean) => boolean) | undefined;
+            readonly F10?: ((state?: boolean) => boolean) | undefined;
+            readonly F11?: ((state?: boolean) => boolean) | undefined;
+            readonly F12?: ((state?: boolean) => boolean) | undefined;
+            readonly numLock?: ((state?: boolean) => boolean) | undefined;
+            readonly scrollLock?: ((state?: boolean) => boolean) | undefined;
+            readonly semicolon?: ((state?: boolean) => boolean) | undefined;
+            readonly equals?: ((state?: boolean) => boolean) | undefined;
+            readonly comma?: ((state?: boolean) => boolean) | undefined;
+            readonly dash?: ((state?: boolean) => boolean) | undefined;
+            readonly period?: ((state?: boolean) => boolean) | undefined;
+            readonly forwardSlash?: ((state?: boolean) => boolean) | undefined;
+            readonly graveAccent?: ((state?: boolean) => boolean) | undefined;
+            readonly bracketOpen?: ((state?: boolean) => boolean) | undefined;
+            readonly slashBack?: ((state?: boolean) => boolean) | undefined;
+            readonly slashBackLeft?: ((state?: boolean) => boolean) | undefined;
+            readonly bracketClose?: ((state?: boolean) => boolean) | undefined;
+            readonly quoteSingle?: ((state?: boolean) => boolean) | undefined;
+        };
+        down(event?: KeyboardEvent): void;
+        up(event?: KeyboardEvent): void;
+    }
 }
 
 declare namespace $ {
@@ -2315,13 +2443,20 @@ declare namespace $ {
 
 declare namespace $ {
     class $koplenov_infinity_marker extends $mol_page {
+        select_merge(next?: any): any;
+        select_delete(next?: any): any;
         chunk_size(): number;
+        plugins(): readonly any[];
         tools(): readonly any[];
         body(): readonly any[];
         Pic(id: any): $mol_stack;
+        Control(): $$.$mol_keyboard_state;
         color(val?: any): string;
         formats(): Record<string, any>;
         Formats(): $$.$mol_switch;
+        marker(val?: any): string;
+        markers(): Record<string, any>;
+        Markers(): $$.$mol_switch;
         add_tools(): any;
         before(id: any): readonly any[];
         after(id: any): readonly any[];
@@ -2331,23 +2466,32 @@ declare namespace $ {
         image(id: any): string;
         Image(id: any): $$.$mol_image;
         checked(id: any, next?: any): boolean;
-        Selector(id: any): $mol_check_box;
+        marked(id: any, next?: any): string;
+        Selector(id: any): $koplenov_infinity_marker_box;
+    }
+    class $koplenov_infinity_marker_box extends $mol_check_box {
+        attr(): Record<string, any>;
+        marked(): string;
     }
 }
 
 declare namespace $.$$ {
     interface $koplenov_infinity_record {
+        marked: string;
         id: number;
         src: string;
         seo_name: string;
         from2to: string;
     }
     export class $koplenov_infinity_marker extends $.$koplenov_infinity_marker {
+        select_merge(next?: any): void;
+        select_delete(next?: any): void;
         Pics(index: any): $mol_stack[];
         links(page: number): $koplenov_infinity_record[];
         after(anchor_id: number): number[];
         image(data: $koplenov_infinity_record): string;
         checked(record: $koplenov_infinity_record, next?: any): any;
+        marked(record: $koplenov_infinity_record, next?: any): any;
     }
     export {};
 }

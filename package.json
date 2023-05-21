@@ -176,6 +176,7 @@
     "$mol_icon_brightness",
     "$koplenov_infinity_marker",
     "$mol_stack",
+    "$mol_keyboard_state",
     "$mol_switch",
     "$mol_check_list",
     "$mol_state_session",

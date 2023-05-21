@@ -6911,13 +6911,15 @@ var $;
         }
         tools() {
             return [
-                this.Download(),
                 this.add_tools()
             ];
         }
         body() {
             return [
-                this.Gallery()
+                this.Download_merge(),
+                this.Gallery_merge(),
+                this.Download_delete(),
+                this.Gallery_delete()
             ];
         }
         Pic(id) {
@@ -6927,26 +6929,45 @@ var $;
             obj.uri = () => this.image(id);
             return obj;
         }
-        download(next) {
+        add_tools() {
+            return null;
+        }
+        download_merge(next) {
             if (next !== undefined)
                 return next;
             return null;
         }
-        Download() {
+        Download_merge() {
             const obj = new this.$.$mol_button_minor();
-            obj.title = () => "Выгрузить";
-            obj.click = (next) => this.download(next);
+            obj.title = () => "for Merge (Выгрузить)";
+            obj.click = (next) => this.download_merge(next);
             return obj;
         }
-        add_tools() {
+        Pics_merge() {
             return null;
         }
-        Pics() {
-            return null;
-        }
-        Gallery() {
+        Gallery_merge() {
             const obj = new this.$.$mol_gallery();
-            obj.items = () => this.Pics();
+            obj.items = () => this.Pics_merge();
+            return obj;
+        }
+        download_delete(next) {
+            if (next !== undefined)
+                return next;
+            return null;
+        }
+        Download_delete() {
+            const obj = new this.$.$mol_button_minor();
+            obj.title = () => "for Delete (Выгрузить)";
+            obj.click = (next) => this.download_delete(next);
+            return obj;
+        }
+        Pics_delete() {
+            return null;
+        }
+        Gallery_delete() {
+            const obj = new this.$.$mol_gallery();
+            obj.items = () => this.Pics_delete();
             return obj;
         }
         image(id) {
@@ -6958,13 +6979,22 @@ var $;
     ], $koplenov_infinity_preview.prototype, "Pic", null);
     __decorate([
         $mol_mem
-    ], $koplenov_infinity_preview.prototype, "download", null);
+    ], $koplenov_infinity_preview.prototype, "download_merge", null);
     __decorate([
         $mol_mem
-    ], $koplenov_infinity_preview.prototype, "Download", null);
+    ], $koplenov_infinity_preview.prototype, "Download_merge", null);
     __decorate([
         $mol_mem
-    ], $koplenov_infinity_preview.prototype, "Gallery", null);
+    ], $koplenov_infinity_preview.prototype, "Gallery_merge", null);
+    __decorate([
+        $mol_mem
+    ], $koplenov_infinity_preview.prototype, "download_delete", null);
+    __decorate([
+        $mol_mem
+    ], $koplenov_infinity_preview.prototype, "Download_delete", null);
+    __decorate([
+        $mol_mem
+    ], $koplenov_infinity_preview.prototype, "Gallery_delete", null);
     $.$koplenov_infinity_preview = $koplenov_infinity_preview;
 })($ || ($ = {}));
 //koplenov/infinity/preview/-view.tree/preview.view.tree.ts
@@ -6979,32 +7009,46 @@ var $;
                 const data = { ...$mol_state_local.native() };
                 const out = [];
                 Object.entries(data).map(([key, value]) => {
-                    let obj = {};
-                    try {
-                        obj = JSON.parse(key);
-                    }
-                    catch (e) {
-                        if (e instanceof Promise) {
-                            return $mol_fail_hidden(e);
-                        }
-                    }
-                    if (value === "true" && obj.seo_name)
-                        out.push(obj);
+                    if (key.includes("_checked") && $mol_state_local.value(key))
+                        out.push(key.replace("_checked", ""));
                 });
+                $mol_wire_sync(console.log)({ out });
                 return out;
             }
-            Pics() {
-                return this.pics().map(record => this.Pic(record));
+            pics_for_merge() {
+                return this.pics().filter(seo_name => $mol_state_local.value(seo_name + "_marked") === "for_merge");
             }
-            image(record) {
-                return record.src;
+            Pics_merge() {
+                return this.pics_for_merge().map(seo_name => this.Pic(seo_name));
             }
-            download() {
-                const links = this.pics().map(record => {
-                    return `https://img-converter.com/en/${record.from2to}/${record.seo_name}`;
+            pics_for_delete() {
+                return this.pics().filter(seo_name => $mol_state_local.value(seo_name + "_marked") === "for_delete");
+            }
+            Pics_delete() {
+                return this.pics_for_delete().map(seo_name => this.Pic(seo_name));
+            }
+            image(seo_name) {
+                return ($mol_state_local.value(seo_name + "_content") ?? { src: "" }).src;
+            }
+            download_merge() {
+                const links = this.pics_for_merge().map(seo_name => {
+                    const from2to = ($mol_state_local.value(seo_name + "_content") ?? { from2to: "gg" }).from2to;
+                    return `https://img-converter.com/en/${from2to}/${seo_name}`;
                 });
                 const data = links.join("\n");
-                const filename = `links-${(new Date()).toISOString()}.txt`;
+                const filename = `links-merge-${(new Date()).toISOString()}.txt`;
+                this.download(filename, data);
+            }
+            download_delete() {
+                const links = this.pics_for_delete().map(seo_name => {
+                    const from2to = ($mol_state_local.value(seo_name + "_content") ?? { from2to: "gg" }).from2to;
+                    return `https://img-converter.com/en/${from2to}/${seo_name}`;
+                });
+                const data = links.join("\n");
+                const filename = `links-delete-${(new Date()).toISOString()}.txt`;
+                this.download(filename, data);
+            }
+            download(filename, data) {
                 const blob = new Blob([data], { type: 'text/plain' });
                 if (window.navigator.msSaveOrOpenBlob) {
                     window.navigator.msSaveBlob(blob, filename);
@@ -7020,14 +7064,30 @@ var $;
             }
         }
         __decorate([
-            $mol_mem
+            $mol_mem,
+            $mol_action
         ], $koplenov_infinity_preview.prototype, "pics", null);
         __decorate([
             $mol_mem
-        ], $koplenov_infinity_preview.prototype, "Pics", null);
+        ], $koplenov_infinity_preview.prototype, "pics_for_merge", null);
+        __decorate([
+            $mol_mem
+        ], $koplenov_infinity_preview.prototype, "Pics_merge", null);
+        __decorate([
+            $mol_mem
+        ], $koplenov_infinity_preview.prototype, "pics_for_delete", null);
+        __decorate([
+            $mol_mem
+        ], $koplenov_infinity_preview.prototype, "Pics_delete", null);
         __decorate([
             $mol_mem_key
         ], $koplenov_infinity_preview.prototype, "image", null);
+        __decorate([
+            $mol_action
+        ], $koplenov_infinity_preview.prototype, "download_merge", null);
+        __decorate([
+            $mol_action
+        ], $koplenov_infinity_preview.prototype, "download_delete", null);
         __decorate([
             $mol_action
         ], $koplenov_infinity_preview.prototype, "download", null);
@@ -7178,6 +7238,76 @@ var $;
     $mol_style_attach("mol/stack/stack.view.css", "[mol_stack] {\n\tdisplay: grid;\n\t/* width: max-content; */\n\t/* height: max-content; */\n\talign-items: flex-start;\n\tjustify-items: flex-start;\n}\n\n[mol_stack] > * {\n\tgrid-area: 1/1;\n}\n");
 })($ || ($ = {}));
 //mol/stack/-css/stack.view.css.ts
+;
+"use strict";
+var $;
+(function ($) {
+    class $mol_keyboard_state extends $mol_plugin {
+        event() {
+            return {
+                ...super.event(),
+                keydown: (next) => this.down(next),
+                keyup: (next) => this.up(next)
+            };
+        }
+        key() {
+            return {};
+        }
+        down(next) {
+            if (next !== undefined)
+                return next;
+            return null;
+        }
+        up(next) {
+            if (next !== undefined)
+                return next;
+            return null;
+        }
+    }
+    __decorate([
+        $mol_mem
+    ], $mol_keyboard_state.prototype, "down", null);
+    __decorate([
+        $mol_mem
+    ], $mol_keyboard_state.prototype, "up", null);
+    $.$mol_keyboard_state = $mol_keyboard_state;
+})($ || ($ = {}));
+//mol/keyboard/state/-view.tree/state.view.tree.ts
+;
+"use strict";
+var $;
+(function ($) {
+    var $$;
+    (function ($$) {
+        class $mol_keyboard_state extends $.$mol_keyboard_state {
+            key() {
+                return super.key();
+            }
+            down(event) {
+                if (!event)
+                    return;
+                if (event.defaultPrevented)
+                    return;
+                let name = $mol_keyboard_code[event.keyCode];
+                const handle = this.key()[name];
+                if (handle)
+                    handle(true);
+            }
+            up(event) {
+                if (!event)
+                    return;
+                if (event.defaultPrevented)
+                    return;
+                let name = $mol_keyboard_code[event.keyCode];
+                const handle = this.key()[name];
+                if (handle)
+                    handle(false);
+            }
+        }
+        $$.$mol_keyboard_state = $mol_keyboard_state;
+    })($$ = $.$$ || ($.$$ = {}));
+})($ || ($ = {}));
+//mol/keyboard/state/state.view.ts
 ;
 "use strict";
 var $;
@@ -7528,12 +7658,28 @@ var $;
 var $;
 (function ($) {
     class $koplenov_infinity_marker extends $mol_page {
+        select_merge(next) {
+            if (next !== undefined)
+                return next;
+            return null;
+        }
+        select_delete(next) {
+            if (next !== undefined)
+                return next;
+            return null;
+        }
         chunk_size() {
             return 30;
+        }
+        plugins() {
+            return [
+                this.Control()
+            ];
         }
         tools() {
             return [
                 this.Formats(),
+                this.Markers(),
                 this.add_tools()
             ];
         }
@@ -7548,6 +7694,16 @@ var $;
                 this.Image(id),
                 this.Selector(id)
             ];
+            return obj;
+        }
+        Control() {
+            const obj = new this.$.$mol_keyboard_state();
+            obj.key = () => ({
+                key1: (next) => this.select_merge(next),
+                key2: (next) => this.select_delete(next),
+                Q: (next) => this.select_merge(next),
+                E: (next) => this.select_delete(next)
+            });
             return obj;
         }
         color(val) {
@@ -7565,6 +7721,23 @@ var $;
             const obj = new this.$.$mol_switch();
             obj.value = (val) => this.color(val);
             obj.options = () => this.formats();
+            return obj;
+        }
+        marker(val) {
+            if (val !== undefined)
+                return val;
+            return "for_merge";
+        }
+        markers() {
+            return {
+                for_merge: "for Merge",
+                for_delete: "for Delete"
+            };
+        }
+        Markers() {
+            const obj = new this.$.$mol_switch();
+            obj.value = (val) => this.marker(val);
+            obj.options = () => this.markers();
             return obj;
         }
         add_tools() {
@@ -7608,21 +7781,42 @@ var $;
                 return next;
             return false;
         }
+        marked(id, next) {
+            if (next !== undefined)
+                return next;
+            return "none";
+        }
         Selector(id) {
-            const obj = new this.$.$mol_check_box();
+            const obj = new this.$.$koplenov_infinity_marker_box();
             obj.checked = (next) => this.checked(id, next);
+            obj.marked = () => this.marked(id);
             return obj;
         }
     }
     __decorate([
+        $mol_mem
+    ], $koplenov_infinity_marker.prototype, "select_merge", null);
+    __decorate([
+        $mol_mem
+    ], $koplenov_infinity_marker.prototype, "select_delete", null);
+    __decorate([
         $mol_mem_key
     ], $koplenov_infinity_marker.prototype, "Pic", null);
+    __decorate([
+        $mol_mem
+    ], $koplenov_infinity_marker.prototype, "Control", null);
     __decorate([
         $mol_mem
     ], $koplenov_infinity_marker.prototype, "color", null);
     __decorate([
         $mol_mem
     ], $koplenov_infinity_marker.prototype, "Formats", null);
+    __decorate([
+        $mol_mem
+    ], $koplenov_infinity_marker.prototype, "marker", null);
+    __decorate([
+        $mol_mem
+    ], $koplenov_infinity_marker.prototype, "Markers", null);
     __decorate([
         $mol_mem_key
     ], $koplenov_infinity_marker.prototype, "Gallery", null);
@@ -7637,8 +7831,23 @@ var $;
     ], $koplenov_infinity_marker.prototype, "checked", null);
     __decorate([
         $mol_mem_key
+    ], $koplenov_infinity_marker.prototype, "marked", null);
+    __decorate([
+        $mol_mem_key
     ], $koplenov_infinity_marker.prototype, "Selector", null);
     $.$koplenov_infinity_marker = $koplenov_infinity_marker;
+    class $koplenov_infinity_marker_box extends $mol_check_box {
+        attr() {
+            return {
+                ...super.attr(),
+                marked: this.marked()
+            };
+        }
+        marked() {
+            return "none";
+        }
+    }
+    $.$koplenov_infinity_marker_box = $koplenov_infinity_marker_box;
 })($ || ($ = {}));
 //koplenov/infinity/marker/-view.tree/infinity.view.tree.ts
 ;
@@ -7648,8 +7857,16 @@ var $;
     var $$;
     (function ($$) {
         class $koplenov_infinity_marker extends $.$koplenov_infinity_marker {
+            select_merge(next) {
+                if (next)
+                    this.marker("for_merge");
+            }
+            select_delete(next) {
+                if (next)
+                    this.marker("for_delete");
+            }
             Pics(index) {
-                return this.links(index).reverse().map(data => this.Pic(data));
+                return this.links(index).reverse().map(record => $mol_state_local.value(record.seo_name + "_content", record)).map(data => this.Pic(data));
             }
             links(page) {
                 const uri = `https://ai.img-converter.com/report/${this.Formats().value()}?page=${page || 1}&count=${this.chunk_size()}&query=`;
@@ -7662,9 +7879,23 @@ var $;
                 return data.src;
             }
             checked(record, next) {
-                return $mol_state_local.value(JSON.stringify(record), next) ?? false;
+                if (next === true)
+                    this.marked(record, this.marker());
+                else if (next === false)
+                    this.marked(record, "none");
+                $mol_state_local.value(record.seo_name + "_marked", this.marked(record));
+                return $mol_state_local.value(record.seo_name + "_checked", next) ?? false;
+            }
+            marked(record, next) {
+                return $mol_state_local.value(record.seo_name + "_marked", next) ?? "none";
             }
         }
+        __decorate([
+            $mol_mem
+        ], $koplenov_infinity_marker.prototype, "select_merge", null);
+        __decorate([
+            $mol_mem
+        ], $koplenov_infinity_marker.prototype, "select_delete", null);
         __decorate([
             $mol_mem_key
         ], $koplenov_infinity_marker.prototype, "Pics", null);
@@ -7680,6 +7911,9 @@ var $;
         __decorate([
             $mol_mem_key
         ], $koplenov_infinity_marker.prototype, "checked", null);
+        __decorate([
+            $mol_mem_key
+        ], $koplenov_infinity_marker.prototype, "marked", null);
         $$.$koplenov_infinity_marker = $koplenov_infinity_marker;
     })($$ = $.$$ || ($.$$ = {}));
 })($ || ($ = {}));
@@ -7688,7 +7922,7 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    $mol_style_attach("koplenov/infinity/marker/infinity.view.css", "/*[koplenov_infinity_marker_Pic] {\n\tmargin: var(--mol_gap_block);\n\tflex: 1 1 auto;\n\tflex-direction: column;\n\tposition: relative;\n\taspect-ratio: 1;\n\tbackground-size: cover;\n\tborder-radius: var(--mol_gap_round);\n\toverflow: hidden;\n}*/\n\n[koplenov_infinity_marker_Selector] {\n\twidth: 100%;\n\theight: 100%;\n}\n\n[koplenov_infinity_marker_Pic]>[mol_check_checked] {\n\tborder:  10px ridge var(--mol_theme_special);\n}\n");
+    $mol_style_attach("koplenov/infinity/marker/infinity.view.css", "/*[koplenov_infinity_marker_Pic] {\n\tmargin: var(--mol_gap_block);\n\tflex: 1 1 auto;\n\tflex-direction: column;\n\tposition: relative;\n\taspect-ratio: 1;\n\tbackground-size: cover;\n\tborder-radius: var(--mol_gap_round);\n\toverflow: hidden;\n}*/\n\n[koplenov_infinity_marker_Selector] {\n\twidth: 100%;\n\theight: 100%;\n}\n\n/*[koplenov_infinity_marker_Pic]>[mol_check_checked] {\n\tborder:  10px ridge var(--mol_theme_special);\n}*/\n\n\n[koplenov_infinity_marker_Pic]>[mol_check_checked=\"for_merge\"],\n[koplenov_infinity_marker_Pic]>[marked=\"for_merge\"] {\n\tborder:  10px ridge var(--mol_theme_special);\n}\n\n[koplenov_infinity_marker_Pic]>[mol_check_checked=\"for_delete\"],\n[koplenov_infinity_marker_Pic]>[marked=\"for_delete\"] {\n\tborder:  10px ridge red;\n}\n");
 })($ || ($ = {}));
 //koplenov/infinity/marker/-css/infinity.view.css.ts
 
