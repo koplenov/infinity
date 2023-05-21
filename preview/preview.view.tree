@@ -1,0 +1,14 @@
+$koplenov_infinity_preview $mol_page
+	title \Previewer
+	tools /
+		<= Download $mol_button_minor
+			title \Выгрузить
+			click? <=> download? null
+		<= add_tools
+	body /
+		<= Gallery $mol_gallery
+			items <= Pics
+	Pic* $mol_image
+		natural_width 124
+		natural_height 124
+		uri <= image* \

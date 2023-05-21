@@ -1,7 +1,10 @@
 
 namespace $.$$ {
-	interface Record {
+	interface $koplenov_infinity_record {
+		id: number
 		src: string
+		seo_name: string
+		from2to: string
 	}
 
 	export class $koplenov_infinity_marker extends $.$koplenov_infinity_marker {
@@ -15,7 +18,7 @@ namespace $.$$ {
 		@$mol_mem_key
 		links( page: number ) {
 			const uri = `https://ai.img-converter.com/report/${ this.Formats().value() }?page=${ page || 1 }&count=${ this.chunk_size() }&query=`
-			return $mol_fetch.json( uri ) as Record[]
+			return $mol_fetch.json( uri ) as $koplenov_infinity_record[]
 		}
 
 		// ээ, шото необходимое для работы подзагрузки
@@ -28,9 +31,13 @@ namespace $.$$ {
 		}
 
 		@$mol_mem_key
-		image( data: Record ) {
-			// $mol_wire_solid()
+		image( data: $koplenov_infinity_record ) {
 			return data.src
+		}
+
+		@$mol_mem_key
+		checked( record: $koplenov_infinity_record, next?: any ) {
+			return $mol_state_local.value( JSON.stringify( record ), next ) ?? false
 		}
 	}
 }
