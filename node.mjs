@@ -7627,7 +7627,7 @@ var $;
                     return `https://img-converter.com/en/${record.from2to}/${record.seo_name}`;
                 });
                 const data = links.join("\n");
-                const filename = "links.txt";
+                const filename = `links-${(new Date()).toISOString()}.txt`;
                 const blob = new Blob([data], { type: 'text/plain' });
                 if (window.navigator.msSaveOrOpenBlob) {
                     window.navigator.msSaveBlob(blob, filename);
