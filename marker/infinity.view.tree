@@ -1,11 +1,25 @@
 $koplenov_infinity_marker $mol_page
+	select_merge? null
+	select_delete? null
 	chunk_size 30
+	plugins /
+		<= Control $mol_keyboard_state
+			key *
+				key1? <=> select_merge?
+				key2? <=> select_delete?
+				Q? <=> select_merge?
+				E? <=> select_delete?
 	tools /
 		<= Formats $mol_switch
 			value?val <=> color?val \txt2img
 			options <= formats *
 				txt2img \text to img
 				img2img \img to img
+		<= Markers $mol_switch
+			value?val <=> marker?val \for_merge
+			options <= markers *
+				for_merge \for Merge
+				for_delete \for Delete
 		<= add_tools null
 	body /
 		<= List $mol_infinite
@@ -21,5 +35,11 @@ $koplenov_infinity_marker $mol_page
 				natural_width 240
 				natural_height 240
 				uri <= image* \
-			<= Selector* $mol_check_box
+			<= Selector* $koplenov_infinity_marker_box
 				checked? <=> checked*? false
+				marked <= marked*? \none
+
+$koplenov_infinity_marker_box $mol_check_box
+	attr *
+		^
+		marked <= marked \none
