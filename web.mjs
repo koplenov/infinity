@@ -6916,10 +6916,7 @@ var $;
         }
         body() {
             return [
-                this.Download_merge(),
-                this.Gallery_merge(),
-                this.Download_delete(),
-                this.Gallery_delete()
+                this.List()
             ];
         }
         Pic(id) {
@@ -6970,6 +6967,16 @@ var $;
             obj.items = () => this.Pics_delete();
             return obj;
         }
+        List() {
+            const obj = new this.$.$mol_list();
+            obj.rows = () => [
+                this.Download_merge(),
+                this.Gallery_merge(),
+                this.Download_delete(),
+                this.Gallery_delete()
+            ];
+            return obj;
+        }
         image(id) {
             return "";
         }
@@ -6995,6 +7002,9 @@ var $;
     __decorate([
         $mol_mem
     ], $koplenov_infinity_preview.prototype, "Gallery_delete", null);
+    __decorate([
+        $mol_mem
+    ], $koplenov_infinity_preview.prototype, "List", null);
     $.$koplenov_infinity_preview = $koplenov_infinity_preview;
 })($ || ($ = {}));
 //koplenov/infinity/preview/-view.tree/preview.view.tree.ts
@@ -7922,7 +7932,7 @@ var $;
 "use strict";
 var $;
 (function ($) {
-    $mol_style_attach("koplenov/infinity/marker/infinity.view.css", "/*[koplenov_infinity_marker_Pic] {\n\tmargin: var(--mol_gap_block);\n\tflex: 1 1 auto;\n\tflex-direction: column;\n\tposition: relative;\n\taspect-ratio: 1;\n\tbackground-size: cover;\n\tborder-radius: var(--mol_gap_round);\n\toverflow: hidden;\n}*/\n\n[koplenov_infinity_marker_Selector] {\n\twidth: 100%;\n\theight: 100%;\n}\n\n/*[koplenov_infinity_marker_Pic]>[mol_check_checked] {\n\tborder:  10px ridge var(--mol_theme_special);\n}*/\n\n[mol_check_checked][id$=\"(\\\"for_merge\\\")\"]{\n\tborder:  4px ridge var(--mol_theme_special);\n}\n[mol_check_checked][id$=\"(\\\"for_delete\\\")\"]{\n\tborder:  4px ridge red;\n}\n\n[koplenov_infinity_marker_Pic]>[marked=\"for_merge\"] {\n\tborder:  10px ridge var(--mol_theme_special);\n}\n\n[koplenov_infinity_marker_Pic]>[marked=\"for_delete\"] {\n\tborder:  10px ridge red;\n}\n");
+    $mol_style_attach("koplenov/infinity/marker/infinity.view.css", "[koplenov_infinity_marker_Selector] {\n\twidth: 100%;\n\theight: 100%;\n}\n\n[mol_check_checked][id$=\"(\\\"for_merge\\\")\"]{\n\tborder:  4px ridge var(--mol_theme_special);\n}\n[mol_check_checked][id$=\"(\\\"for_delete\\\")\"]{\n\tborder:  4px ridge red;\n}\n\n[koplenov_infinity_marker_Pic]>[marked=\"for_merge\"] {\n\tborder:  10px ridge var(--mol_theme_special);\n}\n[koplenov_infinity_marker_Pic]>[marked=\"for_delete\"] {\n\tborder:  10px ridge red;\n}\n");
 })($ || ($ = {}));
 //koplenov/infinity/marker/-css/infinity.view.css.ts
 ;

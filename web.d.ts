@@ -2038,6 +2038,7 @@ declare namespace $ {
         Download_delete(): $mol_button_minor;
         Pics_delete(): any;
         Gallery_delete(): $$.$mol_gallery;
+        List(): $$.$mol_list;
         image(id: any): string;
     }
 }

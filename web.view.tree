@@ -362,16 +362,17 @@ $koplenov_infinity_preview $mol_page
 	tools /
 		<= add_tools null
 	body /
-		<= Download_merge $mol_button_minor
-			title \for Merge (Выгрузить)
-			click? <=> download_merge? null
-		<= Gallery_merge $mol_gallery
-			items <= Pics_merge null
-		<= Download_delete $mol_button_minor
-			title \for Delete (Выгрузить)
-			click? <=> download_delete? null
-		<= Gallery_delete $mol_gallery
-			items <= Pics_delete null
+		<= List $mol_list rows /
+			<= Download_merge $mol_button_minor
+				title \for Merge (Выгрузить)
+				click? <=> download_merge? null
+			<= Gallery_merge $mol_gallery
+				items <= Pics_merge null
+			<= Download_delete $mol_button_minor
+				title \for Delete (Выгрузить)
+				click? <=> download_delete? null
+			<= Gallery_delete $mol_gallery
+				items <= Pics_delete null
 	Pic* $mol_image
 		natural_width 124
 		natural_height 124
