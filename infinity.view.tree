@@ -7,3 +7,5 @@ $koplenov_infinity $mol_book2_catalog
 			add_tools <= Spread_close
 		preview <= Preview $koplenov_infinity_preview
 			add_tools <= Spread_close
+		settings <= Settings $koplenov_infinity_settings
+			add_tools <= Spread_close

@@ -3,7 +3,7 @@ namespace $.$$ {
 		@$mol_mem
 		pics() {
 			const data = { ...$mol_state_local.native() }
-			const out = [] as $koplenov_infinity_record[]
+			const out = [] as any[]
 			Object.entries( data ).map( ( [ key, value ] ) => {
 				const obj = JSON.parse( key )
 				if( value === "true" && obj.seo_name )

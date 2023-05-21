@@ -1,0 +1,8 @@
+$koplenov_infinity_settings $mol_page
+	title \Settings
+	tools /
+		<= add_tools null
+	body /
+		<= Clear_local_storage $mol_button_minor
+			title \Очистить localstorage
+			click? <=> clear_local_storage? null
