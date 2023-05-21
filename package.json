@@ -175,12 +175,17 @@
     "$mol_icon_brightness_6",
     "$mol_icon_brightness",
     "$koplenov_infinity_marker",
-    "$mol_image",
+    "$mol_stack",
     "$mol_switch",
     "$mol_check_list",
     "$mol_state_session",
     "$mol_gallery",
-    "$mol_infinite"
+    "$mol_infinite",
+    "$mol_image",
+    "$mol_check_box",
+    "$mol_icon_tick",
+    "$koplenov_infinity_preview",
+    "$koplenov_infinity_settings"
   ],
   "dependencies": {
     "jsdom": "*",

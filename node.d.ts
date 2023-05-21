@@ -2133,6 +2133,90 @@ declare namespace $ {
 }
 
 declare namespace $ {
+    class $mol_gallery extends $mol_view {
+        sub(): readonly $mol_view[];
+        Side(id: any): $$.$mol_gallery;
+        items(): readonly $mol_view[];
+        side_size(id: any): string;
+        side_items(id: any): readonly $mol_view[];
+    }
+}
+
+declare namespace $.$$ {
+    class $mol_gallery extends $.$mol_gallery {
+        sub(): readonly $mol_view[];
+        side_items(id: number): $mol_view[];
+        side_size(id: number): string;
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
+    class $koplenov_infinity_preview extends $mol_page {
+        title(): string;
+        tools(): readonly any[];
+        body(): readonly any[];
+        Pic(id: any): $$.$mol_image;
+        download(next?: any): any;
+        Download(): $mol_button_minor;
+        add_tools(): any;
+        Pics(): any;
+        Gallery(): $$.$mol_gallery;
+        image(id: any): string;
+    }
+}
+
+declare namespace $.$$ {
+    class $koplenov_infinity_preview extends $.$koplenov_infinity_preview {
+        pics(): any[];
+        Pics(): $mol_image[];
+        image(record: any): any;
+        download(): void;
+    }
+}
+
+declare namespace $ {
+    class $koplenov_infinity_settings extends $mol_page {
+        title(): string;
+        tools(): readonly any[];
+        body(): readonly any[];
+        add_tools(): any;
+        clear_local_storage(next?: any): any;
+        Clear_local_storage(): $mol_button_minor;
+    }
+}
+
+declare namespace $.$$ {
+    class $koplenov_infinity_settings extends $.$koplenov_infinity_settings {
+        clear_local_storage(): void;
+    }
+}
+
+declare namespace $ {
+    class $koplenov_infinity extends $mol_book2_catalog {
+        plugins(): readonly any[];
+        menu_tools(): readonly any[];
+        menu_title(): string;
+        spreads(): Record<string, any>;
+        Themme(): $$.$mol_theme_auto;
+        Lighter(): $$.$mol_lights_toggle;
+        Marker(): $$.$koplenov_infinity_marker;
+        Preview(): $$.$koplenov_infinity_preview;
+        Settings(): $$.$koplenov_infinity_settings;
+    }
+}
+
+declare namespace $ {
+    class $mol_stack extends $mol_view {
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
     class $mol_check_list extends $mol_view {
         Option(id: any): $$.$mol_check;
         options(): Record<string, any>;
@@ -2190,27 +2274,6 @@ declare namespace $.$$ {
 }
 
 declare namespace $ {
-    class $mol_gallery extends $mol_view {
-        sub(): readonly $mol_view[];
-        Side(id: any): $$.$mol_gallery;
-        items(): readonly $mol_view[];
-        side_size(id: any): string;
-        side_items(id: any): readonly $mol_view[];
-    }
-}
-
-declare namespace $.$$ {
-    class $mol_gallery extends $.$mol_gallery {
-        sub(): readonly $mol_view[];
-        side_items(id: number): $mol_view[];
-        side_size(id: number): string;
-    }
-}
-
-declare namespace $ {
-}
-
-declare namespace $ {
     class $mol_infinite extends $mol_list {
         before(id: any): readonly any[];
         after(id: any): readonly any[];
@@ -2236,11 +2299,26 @@ declare namespace $ {
 }
 
 declare namespace $ {
+    class $mol_icon_tick extends $mol_icon {
+        path(): string;
+    }
+}
+
+declare namespace $ {
+    class $mol_check_box extends $mol_check {
+        Icon(): $mol_icon_tick;
+    }
+}
+
+declare namespace $ {
+}
+
+declare namespace $ {
     class $koplenov_infinity_marker extends $mol_page {
         chunk_size(): number;
         tools(): readonly any[];
         body(): readonly any[];
-        Pic(id: any): $$.$mol_image;
+        Pic(id: any): $mol_stack;
         color(val?: any): string;
         formats(): Record<string, any>;
         Formats(): $$.$mol_switch;
@@ -2251,35 +2329,30 @@ declare namespace $ {
         Gallery(id: any): $$.$mol_gallery;
         List(): $$.$mol_infinite;
         image(id: any): string;
+        Image(id: any): $$.$mol_image;
+        checked(id: any, next?: any): boolean;
+        Selector(id: any): $mol_check_box;
     }
 }
 
 declare namespace $.$$ {
-    interface Record {
+    interface $koplenov_infinity_record {
+        id: number;
         src: string;
+        seo_name: string;
+        from2to: string;
     }
     export class $koplenov_infinity_marker extends $.$koplenov_infinity_marker {
-        Pics(index: any): $mol_image[];
-        links(page: number): Record[];
+        Pics(index: any): $mol_stack[];
+        links(page: number): $koplenov_infinity_record[];
         after(anchor_id: number): number[];
-        image(data: Record): string;
+        image(data: $koplenov_infinity_record): string;
+        checked(record: $koplenov_infinity_record, next?: any): any;
     }
     export {};
 }
 
 declare namespace $ {
-}
-
-declare namespace $ {
-    class $koplenov_infinity extends $mol_book2_catalog {
-        plugins(): readonly any[];
-        menu_tools(): readonly any[];
-        menu_title(): string;
-        spreads(): Record<string, any>;
-        Themme(): $$.$mol_theme_auto;
-        Lighter(): $$.$mol_lights_toggle;
-        Marker(): $$.$koplenov_infinity_marker;
-    }
 }
 
 export = $;

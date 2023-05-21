@@ -350,6 +350,51 @@ $mol_image $mol_view
 	minimal_width 16
 	minimal_height 16
 
+$mol_gallery $mol_view
+	sub <= items /$mol_view
+	Side* $mol_gallery
+		style *
+			flexGrow <= side_size* \1
+		items <= side_items* /$mol_view
+
+$koplenov_infinity_preview $mol_page
+	title \Previewer
+	tools /
+		<= Download $mol_button_minor
+			title \Выгрузить
+			click? <=> download? null
+		<= add_tools null
+	body /
+		<= Gallery $mol_gallery
+			items <= Pics null
+	Pic* $mol_image
+		natural_width 124
+		natural_height 124
+		uri <= image* \
+
+$koplenov_infinity_settings $mol_page
+	title \Settings
+	tools /
+		<= add_tools null
+	body /
+		<= Clear_local_storage $mol_button_minor
+			title \Очистить localstorage
+			click? <=> clear_local_storage? null
+
+$koplenov_infinity $mol_book2_catalog
+	plugins / <= Themme $mol_theme_auto
+	menu_tools / <= Lighter $mol_lights_toggle
+	menu_title \Img
+	spreads *
+		marker <= Marker $koplenov_infinity_marker
+			add_tools <= Spread_close
+		preview <= Preview $koplenov_infinity_preview
+			add_tools <= Spread_close
+		settings <= Settings $koplenov_infinity_settings
+			add_tools <= Spread_close
+
+$mol_stack $mol_view
+
 $mol_check_list $mol_view
 	Option* $mol_check
 		checked?val <=> option_checked*?val false
@@ -364,13 +409,6 @@ $mol_check_list $mol_view
 
 $mol_switch $mol_check_list
 	value?val \
-
-$mol_gallery $mol_view
-	sub <= items /$mol_view
-	Side* $mol_gallery
-		style *
-			flexGrow <= side_size* \1
-		items <= side_items* /$mol_view
 
 $mol_infinite $mol_list
 	before* /
@@ -387,6 +425,11 @@ $mol_infinite $mol_list
 		minimal_height 0
 		sub / <= after_load* null
 
+$mol_icon_tick $mol_icon path \M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z
+
+$mol_check_box $mol_check
+	Icon $mol_icon_tick
+
 $koplenov_infinity_marker $mol_page
 	chunk_size 30
 	tools /
@@ -401,18 +444,14 @@ $koplenov_infinity_marker $mol_page
 			before* <= before* /
 			after* <= after* /
 			Row* <= Gallery* $mol_gallery
+				minimal_width 400
+				minimal_height 500
 				items <= Pics* /
-	Pic* $mol_image
-		minimal_width 124
-		minimal_height 124
-		natural_width 124
-		natural_height 124
-		uri <= image* \
-
-$koplenov_infinity $mol_book2_catalog
-	plugins / <= Themme $mol_theme_auto
-	menu_tools / <= Lighter $mol_lights_toggle
-	menu_title \Img
-	spreads *
-		marker <= Marker $koplenov_infinity_marker
-			add_tools <= Spread_close
+	Pic* $mol_stack
+		sub /
+			<= Image* $mol_image
+				natural_width 240
+				natural_height 240
+				uri <= image* \
+			<= Selector* $mol_check_box
+				checked? <=> checked*? false
