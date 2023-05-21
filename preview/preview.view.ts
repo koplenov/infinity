@@ -6,19 +6,6 @@ namespace $.$$ {
 			const data = { ...$mol_state_local.native() }
 			const out = [] as any[]
 			Object.entries( data ).map( ( [ key, value ] ) => {
-				/*let obj = {} as any
-				try {
-					obj = JSON.parse( key )
-				}
-				catch( e ) {
-					if( e instanceof Promise ) {
-						return $mol_fail_hidden( e )
-					}
-				}
-
-				if( value === "true" && obj.seo_name )
-					out.push( obj )
-					*/
 				if( key.includes( "_checked" ) && $mol_state_local.value( key ) )
 					out.push( key.replace( "_checked", "" ) )
 			} )
