@@ -23,7 +23,7 @@ namespace $.$$ {
 		// отображаем Row
 		@$mol_mem_key
 		Pics( index: any ) {
-			return this.links( index ).reverse().map( record => $mol_state_local.value( record.seo_name + "_content", record ) ).map( data => this.Pic( data ) )
+			return this.links( index ).reverse().map( record => { return { seo_name: record.seo_name, src: record.src } } ).map( record => $mol_state_local.value( record.seo_name + "_content", record ) ).map( data => this.Pic( data ) )
 		}
 
 		// получаем страницу данных
