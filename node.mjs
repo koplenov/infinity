@@ -961,6 +961,8 @@ var $;
                 result = compare_map(left, right);
             else if (ArrayBuffer.isView(left))
                 result = compare_buffer(left, right);
+            else if (Symbol.iterator in left)
+                result = compare_iterator(left[Symbol.iterator](), right[Symbol.iterator]());
             else if (Symbol.toPrimitive in left)
                 result = compare_primitive(left, right);
             else
@@ -8499,7 +8501,7 @@ var $;
                     this.marker("for_delete");
             }
             Pics(index) {
-                return this.links(index).reverse().map(record => $mol_state_local.value(record.seo_name + "_content", record)).map(data => this.Pic(data));
+                return this.links(index).reverse().map(record => { return { seo_name: record.seo_name, src: record.src }; }).map(record => $mol_state_local.value(record.seo_name + "_content", record)).map(data => this.Pic(data));
             }
             links(page) {
                 const uri = `https://ai.img-converter.com/report/${this.Formats().value()}?page=${page || 1}&count=${this.chunk_size()}&query=`;
