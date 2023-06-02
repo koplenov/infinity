@@ -8564,6 +8564,5 @@ var $;
     $mol_style_attach("koplenov/infinity/marker/infinity.view.css", "[koplenov_infinity_marker_Selector] {\n\twidth: 100%;\n\theight: 100%;\n}\n\n[mol_check_checked][id$=\"(\\\"for_merge\\\")\"]{\n\tborder:  4px ridge var(--mol_theme_special);\n}\n[mol_check_checked][id$=\"(\\\"for_delete\\\")\"]{\n\tborder:  4px ridge red;\n}\n\n[koplenov_infinity_marker_Pic]>[marked=\"for_merge\"] {\n\tborder:  10px ridge var(--mol_theme_special);\n}\n[koplenov_infinity_marker_Pic]>[marked=\"for_delete\"] {\n\tborder:  10px ridge red;\n}\n");
 })($ || ($ = {}));
 //koplenov/infinity/marker/-css/infinity.view.css.ts
-;
-export default $
-//# sourceMappingURL=node.mjs.map
+
+//# sourceMappingURL=node.js.map
