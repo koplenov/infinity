@@ -8612,4 +8612,5 @@ var $;
 })($ || ($ = {}));
 //koplenov/infinity/marker/-css/infinity.view.css.ts
 
+export default $
 //# sourceMappingURL=node.js.map
