@@ -413,6 +413,7 @@ $mol_keyboard_state $mol_plugin
 	key *
 
 $mol_check_list $mol_view
+	dictionary *
 	Option* $mol_check
 		checked? <=> option_checked*? false
 		label <= option_label* /
