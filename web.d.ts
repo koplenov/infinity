@@ -1227,7 +1227,7 @@ declare namespace $ {
 declare namespace $.$$ {
     class $mol_hotkey extends $.$mol_hotkey {
         key(): {
-            [x: number]: ((event: KeyboardEvent) => void) | undefined;
+            readonly [x: number]: ((event: KeyboardEvent) => void) | undefined;
             readonly backspace?: ((event: KeyboardEvent) => void) | undefined;
             readonly tab?: ((event: KeyboardEvent) => void) | undefined;
             readonly enter?: ((event: KeyboardEvent) => void) | undefined;
@@ -2216,7 +2216,7 @@ declare namespace $ {
 declare namespace $.$$ {
     class $mol_keyboard_state extends $.$mol_keyboard_state {
         key(): {
-            [x: number]: ((state?: boolean) => boolean) | undefined;
+            readonly [x: number]: ((state?: boolean) => boolean) | undefined;
             readonly backspace?: ((state?: boolean) => boolean) | undefined;
             readonly tab?: ((state?: boolean) => boolean) | undefined;
             readonly enter?: ((state?: boolean) => boolean) | undefined;
