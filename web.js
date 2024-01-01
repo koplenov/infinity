@@ -1975,6 +1975,9 @@ var $;
         }
         prefix() { return this.name + '('; }
         postfix() { return ')'; }
+        static linear_gradient(value) {
+            return new $mol_style_func('linear-gradient', value);
+        }
         static calc(value) {
             return new $mol_style_func('calc', value);
         }
@@ -3808,7 +3811,7 @@ var $;
                     this.status([null]);
                 }
                 catch (error) {
-                    this.status([error]);
+                    Promise.resolve().then(() => this.status([error]));
                     $mol_fail_hidden(error);
                 }
             }
@@ -6457,6 +6460,12 @@ var $;
         spread_ids_filtered() {
             return [];
         }
+        menu_tools() {
+            return [];
+        }
+        addon_tools() {
+            return [];
+        }
         pages() {
             return [
                 this.Menu()
@@ -6472,9 +6481,6 @@ var $;
         }
         menu_title() {
             return "";
-        }
-        menu_tools() {
-            return [];
         }
         menu_head() {
             return [
@@ -6543,7 +6549,10 @@ var $;
         Menu() {
             const obj = new this.$.$mol_page();
             obj.title = () => this.menu_title();
-            obj.tools = () => this.menu_tools();
+            obj.tools = () => [
+                ...this.menu_tools(),
+                ...this.addon_tools()
+            ];
             obj.head = () => this.menu_head();
             obj.body = () => this.menu_body();
             obj.foot = () => this.menu_foot();
