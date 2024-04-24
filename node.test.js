@@ -5050,9 +5050,9 @@ var $;
 "use strict";
 
 ;
-	($.$mol_icon_cross) = class $mol_icon_cross extends ($.$mol_icon) {
+	($.$mol_icon_close) = class $mol_icon_close extends ($.$mol_icon) {
 		path(){
-			return "M19 6.41L17.59 5L12 10.59L6.41 5L5 6.41L10.59 12L5 17.59L6.41 19L12 13.41L17.59 19L19 17.59L13.41 12L19 6.41Z";
+			return "M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z";
 		}
 	};
 
@@ -5984,7 +5984,7 @@ var $;
 			return obj;
 		}
 		Clear_icon(){
-			const obj = new this.$.$mol_icon_cross();
+			const obj = new this.$.$mol_icon_close();
 			return obj;
 		}
 		Clear(){
@@ -6724,7 +6724,7 @@ var $;
 			return {};
 		}
 		Spread_close_icon(){
-			const obj = new this.$.$mol_icon_cross();
+			const obj = new this.$.$mol_icon_close();
 			return obj;
 		}
 		param(){
@@ -7059,7 +7059,7 @@ var $;
 ;
 	($.$mol_icon_brightness_6) = class $mol_icon_brightness_6 extends ($.$mol_icon) {
 		path(){
-			return "M12,18V6C15.31,6 18,8.69 18,12C18,15.31 15.31,18 12,18M20,15.31L23.31,12L20,8.69V4H15.31L12,0.69L8.69,4H4V8.69L0.69,12L4,15.31V20H8.69L12,23.31L15.31,20H20V15.31Z";
+			return "M12,18V6A6,6 0 0,1 18,12A6,6 0 0,1 12,18M20,15.31L23.31,12L20,8.69V4H15.31L12,0.69L8.69,4H4V8.69L0.69,12L4,15.31V20H8.69L12,23.31L15.31,20H20V15.31Z";
 		}
 	};
 
