@@ -58,9 +58,9 @@ declare namespace $ {
 
 declare namespace $ {
     class $mol_object2 {
-        static $: typeof $$;
+        static $: $;
         [Symbol.toStringTag]: string;
-        [$mol_ambient_ref]: typeof $$;
+        [$mol_ambient_ref]: $;
         get $(): $;
         set $(next: $);
         static create<Instance>(this: new (init?: (instance: any) => void) => Instance, init?: (instance: $mol_type_writable<Instance>) => void): Instance;
@@ -126,7 +126,7 @@ declare namespace $ {
 declare namespace $ {
     let $mol_wire_auto_sub: $mol_wire_sub | null;
     function $mol_wire_auto(next?: $mol_wire_sub | null): $mol_wire_sub | null;
-    const $mol_wire_affected: (number | $mol_wire_sub)[];
+    const $mol_wire_affected: ($mol_wire_sub | number)[];
 }
 
 declare namespace $ {
@@ -294,9 +294,9 @@ declare namespace $ {
 declare namespace $ {
     function $mol_wire_method<Host extends object, Args extends readonly any[]>(host: Host, field: PropertyKey, descr?: TypedPropertyDescriptor<(...args: Args) => any>): {
         value: (this: Host, ...args: Args) => any;
-        enumerable?: boolean | undefined;
-        configurable?: boolean | undefined;
-        writable?: boolean | undefined;
+        enumerable?: boolean;
+        configurable?: boolean;
+        writable?: boolean;
         get?: (() => (...args: Args) => any) | undefined;
         set?: ((value: (...args: Args) => any) => void) | undefined;
     };
@@ -345,9 +345,9 @@ declare namespace $ {
 declare namespace $ {
     function $mol_wire_plex<Args extends [any, ...any[]]>(host: object, field: string, descr?: TypedPropertyDescriptor<(...args: Args) => any>): {
         value: (this: typeof host, ...args: Args) => any;
-        enumerable?: boolean | undefined;
-        configurable?: boolean | undefined;
-        writable?: boolean | undefined;
+        enumerable?: boolean;
+        configurable?: boolean;
+        writable?: boolean;
         get?: (() => (...args: Args) => any) | undefined;
         set?: ((value: (...args: Args) => any) => void) | undefined;
     };
@@ -759,7 +759,7 @@ declare namespace $ {
         state_key(suffix?: string): string;
         dom_name(): string;
         dom_name_space(): string;
-        sub(): readonly (string | number | boolean | $mol_view | Node)[];
+        sub(): readonly ($mol_view | Node | string | number | boolean)[];
         sub_visible(): readonly (string | number | boolean | $mol_view | Node)[];
         minimal_width(): number;
         maximal_width(): number;
@@ -786,7 +786,7 @@ declare namespace $ {
         static view_names(suffix: string): string[];
         view_names_owned(): string[];
         view_names(): Set<string>;
-        theme(next?: string | null): string | null;
+        theme(next?: null | string): string | null;
         attr_static(): {
             [key: string]: string | number | boolean | null;
         };
@@ -947,7 +947,7 @@ declare namespace $ {
 
 declare namespace $ {
 
-	type $mol_view__title__D8VZIN05 = $mol_type_enforce<
+	type $mol_view__title__9Y0F7ABC = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_view['title'] >
@@ -978,17 +978,17 @@ declare namespace $ {
 
 declare namespace $ {
 
-	type $mol_pop_bubble__align__3HZUXLRD = $mol_type_enforce<
+	type $mol_pop_bubble__align__NWDSN2RU = $mol_type_enforce<
 		ReturnType< $mol_pop['align'] >
 		,
 		ReturnType< $mol_pop_bubble['align'] >
 	>
-	type $mol_pop_bubble__content__EB9EUGLN = $mol_type_enforce<
+	type $mol_pop_bubble__content__FKWYFNSK = $mol_type_enforce<
 		ReturnType< $mol_pop['bubble_content'] >
 		,
 		ReturnType< $mol_pop_bubble['content'] >
 	>
-	type $mol_pop_bubble__height_max__6RNXFJK9 = $mol_type_enforce<
+	type $mol_pop_bubble__height_max__746E1XSL = $mol_type_enforce<
 		ReturnType< $mol_pop['height_max'] >
 		,
 		ReturnType< $mol_pop_bubble['height_max'] >
@@ -1175,109 +1175,7 @@ declare namespace $ {
 //# sourceMappingURL=hotkey.view.tree.d.ts.map
 declare namespace $.$$ {
     class $mol_hotkey extends $.$mol_hotkey {
-        key(): {
-            readonly [x: number]: ((event: KeyboardEvent) => void) | undefined;
-            readonly backspace?: ((event: KeyboardEvent) => void) | undefined;
-            readonly tab?: ((event: KeyboardEvent) => void) | undefined;
-            readonly enter?: ((event: KeyboardEvent) => void) | undefined;
-            readonly shift?: ((event: KeyboardEvent) => void) | undefined;
-            readonly ctrl?: ((event: KeyboardEvent) => void) | undefined;
-            readonly alt?: ((event: KeyboardEvent) => void) | undefined;
-            readonly pause?: ((event: KeyboardEvent) => void) | undefined;
-            readonly capsLock?: ((event: KeyboardEvent) => void) | undefined;
-            readonly escape?: ((event: KeyboardEvent) => void) | undefined;
-            readonly space?: ((event: KeyboardEvent) => void) | undefined;
-            readonly pageUp?: ((event: KeyboardEvent) => void) | undefined;
-            readonly pageDown?: ((event: KeyboardEvent) => void) | undefined;
-            readonly end?: ((event: KeyboardEvent) => void) | undefined;
-            readonly home?: ((event: KeyboardEvent) => void) | undefined;
-            readonly left?: ((event: KeyboardEvent) => void) | undefined;
-            readonly up?: ((event: KeyboardEvent) => void) | undefined;
-            readonly right?: ((event: KeyboardEvent) => void) | undefined;
-            readonly down?: ((event: KeyboardEvent) => void) | undefined;
-            readonly insert?: ((event: KeyboardEvent) => void) | undefined;
-            readonly delete?: ((event: KeyboardEvent) => void) | undefined;
-            readonly key0?: ((event: KeyboardEvent) => void) | undefined;
-            readonly key1?: ((event: KeyboardEvent) => void) | undefined;
-            readonly key2?: ((event: KeyboardEvent) => void) | undefined;
-            readonly key3?: ((event: KeyboardEvent) => void) | undefined;
-            readonly key4?: ((event: KeyboardEvent) => void) | undefined;
-            readonly key5?: ((event: KeyboardEvent) => void) | undefined;
-            readonly key6?: ((event: KeyboardEvent) => void) | undefined;
-            readonly key7?: ((event: KeyboardEvent) => void) | undefined;
-            readonly key8?: ((event: KeyboardEvent) => void) | undefined;
-            readonly key9?: ((event: KeyboardEvent) => void) | undefined;
-            readonly A?: ((event: KeyboardEvent) => void) | undefined;
-            readonly B?: ((event: KeyboardEvent) => void) | undefined;
-            readonly C?: ((event: KeyboardEvent) => void) | undefined;
-            readonly D?: ((event: KeyboardEvent) => void) | undefined;
-            readonly E?: ((event: KeyboardEvent) => void) | undefined;
-            readonly F?: ((event: KeyboardEvent) => void) | undefined;
-            readonly G?: ((event: KeyboardEvent) => void) | undefined;
-            readonly H?: ((event: KeyboardEvent) => void) | undefined;
-            readonly I?: ((event: KeyboardEvent) => void) | undefined;
-            readonly J?: ((event: KeyboardEvent) => void) | undefined;
-            readonly K?: ((event: KeyboardEvent) => void) | undefined;
-            readonly L?: ((event: KeyboardEvent) => void) | undefined;
-            readonly M?: ((event: KeyboardEvent) => void) | undefined;
-            readonly N?: ((event: KeyboardEvent) => void) | undefined;
-            readonly O?: ((event: KeyboardEvent) => void) | undefined;
-            readonly P?: ((event: KeyboardEvent) => void) | undefined;
-            readonly Q?: ((event: KeyboardEvent) => void) | undefined;
-            readonly R?: ((event: KeyboardEvent) => void) | undefined;
-            readonly S?: ((event: KeyboardEvent) => void) | undefined;
-            readonly T?: ((event: KeyboardEvent) => void) | undefined;
-            readonly U?: ((event: KeyboardEvent) => void) | undefined;
-            readonly V?: ((event: KeyboardEvent) => void) | undefined;
-            readonly W?: ((event: KeyboardEvent) => void) | undefined;
-            readonly X?: ((event: KeyboardEvent) => void) | undefined;
-            readonly Y?: ((event: KeyboardEvent) => void) | undefined;
-            readonly Z?: ((event: KeyboardEvent) => void) | undefined;
-            readonly metaLeft?: ((event: KeyboardEvent) => void) | undefined;
-            readonly metaRight?: ((event: KeyboardEvent) => void) | undefined;
-            readonly select?: ((event: KeyboardEvent) => void) | undefined;
-            readonly numpad0?: ((event: KeyboardEvent) => void) | undefined;
-            readonly numpad1?: ((event: KeyboardEvent) => void) | undefined;
-            readonly numpad2?: ((event: KeyboardEvent) => void) | undefined;
-            readonly numpad3?: ((event: KeyboardEvent) => void) | undefined;
-            readonly numpad4?: ((event: KeyboardEvent) => void) | undefined;
-            readonly numpad5?: ((event: KeyboardEvent) => void) | undefined;
-            readonly numpad6?: ((event: KeyboardEvent) => void) | undefined;
-            readonly numpad7?: ((event: KeyboardEvent) => void) | undefined;
-            readonly numpad8?: ((event: KeyboardEvent) => void) | undefined;
-            readonly numpad9?: ((event: KeyboardEvent) => void) | undefined;
-            readonly multiply?: ((event: KeyboardEvent) => void) | undefined;
-            readonly add?: ((event: KeyboardEvent) => void) | undefined;
-            readonly subtract?: ((event: KeyboardEvent) => void) | undefined;
-            readonly decimal?: ((event: KeyboardEvent) => void) | undefined;
-            readonly divide?: ((event: KeyboardEvent) => void) | undefined;
-            readonly F1?: ((event: KeyboardEvent) => void) | undefined;
-            readonly F2?: ((event: KeyboardEvent) => void) | undefined;
-            readonly F3?: ((event: KeyboardEvent) => void) | undefined;
-            readonly F4?: ((event: KeyboardEvent) => void) | undefined;
-            readonly F5?: ((event: KeyboardEvent) => void) | undefined;
-            readonly F6?: ((event: KeyboardEvent) => void) | undefined;
-            readonly F7?: ((event: KeyboardEvent) => void) | undefined;
-            readonly F8?: ((event: KeyboardEvent) => void) | undefined;
-            readonly F9?: ((event: KeyboardEvent) => void) | undefined;
-            readonly F10?: ((event: KeyboardEvent) => void) | undefined;
-            readonly F11?: ((event: KeyboardEvent) => void) | undefined;
-            readonly F12?: ((event: KeyboardEvent) => void) | undefined;
-            readonly numLock?: ((event: KeyboardEvent) => void) | undefined;
-            readonly scrollLock?: ((event: KeyboardEvent) => void) | undefined;
-            readonly semicolon?: ((event: KeyboardEvent) => void) | undefined;
-            readonly equals?: ((event: KeyboardEvent) => void) | undefined;
-            readonly comma?: ((event: KeyboardEvent) => void) | undefined;
-            readonly dash?: ((event: KeyboardEvent) => void) | undefined;
-            readonly period?: ((event: KeyboardEvent) => void) | undefined;
-            readonly forwardSlash?: ((event: KeyboardEvent) => void) | undefined;
-            readonly graveAccent?: ((event: KeyboardEvent) => void) | undefined;
-            readonly bracketOpen?: ((event: KeyboardEvent) => void) | undefined;
-            readonly slashBack?: ((event: KeyboardEvent) => void) | undefined;
-            readonly slashBackLeft?: ((event: KeyboardEvent) => void) | undefined;
-            readonly bracketClose?: ((event: KeyboardEvent) => void) | undefined;
-            readonly quoteSingle?: ((event: KeyboardEvent) => void) | undefined;
-        };
+        key(): { [key in keyof typeof $mol_keyboard_code]?: (event: KeyboardEvent) => void; };
         keydown(event?: KeyboardEvent): void;
     }
 }
@@ -1488,12 +1386,12 @@ declare namespace $ {
 
 declare namespace $ {
 
-	type $mol_hotkey__mod_ctrl__PZLTDXQZ = $mol_type_enforce<
+	type $mol_hotkey__mod_ctrl__865FNCRH = $mol_type_enforce<
 		ReturnType< $mol_string['submit_with_ctrl'] >
 		,
 		ReturnType< $mol_hotkey['mod_ctrl'] >
 	>
-	type $mol_hotkey__key__5Z8EC7ZV = $mol_type_enforce<
+	type $mol_hotkey__key__CKQTNK2W = $mol_type_enforce<
 		({ 
 			enter( next?: ReturnType< $mol_string['submit'] > ): ReturnType< $mol_string['submit'] >,
 		}) 
@@ -1631,7 +1529,7 @@ declare namespace $ {
 
 declare namespace $ {
 
-	type $mol_svg_path__geometry__YHEIH3OV = $mol_type_enforce<
+	type $mol_svg_path__geometry__RL6XIAYN = $mol_type_enforce<
 		ReturnType< $mol_icon['path'] >
 		,
 		ReturnType< $mol_svg_path['geometry'] >
@@ -1679,7 +1577,7 @@ declare namespace $ {
 //# sourceMappingURL=speck.view.tree.d.ts.map
 declare namespace $ {
 
-	type $mol_speck__value__P9U0TBNO = $mol_type_enforce<
+	type $mol_speck__value__IK05NXRD = $mol_type_enforce<
 		ReturnType< $mol_button['error'] >
 		,
 		ReturnType< $mol_speck['value'] >
@@ -1760,14 +1658,14 @@ declare namespace $ {
 
 declare namespace $ {
 
-	type $mol_view__style__WHH1KU28 = $mol_type_enforce<
+	type $mol_view__style__3H2GHNJS = $mol_type_enforce<
 		({ 
 			'paddingTop': ReturnType< $mol_list['gap_before'] >,
 		}) 
 		,
 		ReturnType< $mol_view['style'] >
 	>
-	type $mol_view__style__8BDRI3OU = $mol_type_enforce<
+	type $mol_view__style__F2TT96PE = $mol_type_enforce<
 		({ 
 			'paddingTop': ReturnType< $mol_list['gap_after'] >,
 		}) 
@@ -1935,12 +1833,12 @@ declare namespace $ {
 
 declare namespace $ {
 
-	type $mol_paragraph__sub__SEW60CR8 = $mol_type_enforce<
+	type $mol_paragraph__sub__SPTCB1CL = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_paragraph['sub'] >
 	>
-	type $mol_paragraph__sub__1ZT7YV33 = $mol_type_enforce<
+	type $mol_paragraph__sub__AFFGREQO = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_paragraph['sub'] >
@@ -1972,99 +1870,99 @@ declare namespace $ {
 
 declare namespace $ {
 
-	type $mol_hotkey__key__M2ACZK58 = $mol_type_enforce<
+	type $mol_hotkey__key__GOR8UQRY = $mol_type_enforce<
 		({ 
 			escape( next?: ReturnType< $mol_search['clear'] > ): ReturnType< $mol_search['clear'] >,
 		}) 
 		,
 		ReturnType< $mol_hotkey['key'] >
 	>
-	type $mol_nav__keys_y__7ZCTTYOK = $mol_type_enforce<
+	type $mol_nav__keys_y__4QCHEX9U = $mol_type_enforce<
 		ReturnType< $mol_search['nav_components'] >
 		,
 		ReturnType< $mol_nav['keys_y'] >
 	>
-	type $mol_nav__current_y__TZD2MGT8 = $mol_type_enforce<
+	type $mol_nav__current_y__LL10KCVF = $mol_type_enforce<
 		ReturnType< $mol_search['nav_focused'] >
 		,
 		ReturnType< $mol_nav['current_y'] >
 	>
-	type $mol_string__value__YHLEOYRL = $mol_type_enforce<
+	type $mol_string__value__9BVNK5RM = $mol_type_enforce<
 		ReturnType< $mol_search['query'] >
 		,
 		ReturnType< $mol_string['value'] >
 	>
-	type $mol_string__hint__0FOKY9FD = $mol_type_enforce<
+	type $mol_string__hint__JVMZXQKI = $mol_type_enforce<
 		ReturnType< $mol_search['hint'] >
 		,
 		ReturnType< $mol_string['hint'] >
 	>
-	type $mol_string__submit__C4IFDXOA = $mol_type_enforce<
+	type $mol_string__submit__NDT4DM99 = $mol_type_enforce<
 		ReturnType< $mol_search['submit'] >
 		,
 		ReturnType< $mol_string['submit'] >
 	>
-	type $mol_string__enabled__G6YFJXLB = $mol_type_enforce<
+	type $mol_string__enabled__XEDNPGLU = $mol_type_enforce<
 		ReturnType< $mol_search['enabled'] >
 		,
 		ReturnType< $mol_string['enabled'] >
 	>
-	type $mol_string__keyboard__UYGBTMSD = $mol_type_enforce<
+	type $mol_string__keyboard__VVG9E7ZH = $mol_type_enforce<
 		ReturnType< $mol_search['keyboard'] >
 		,
 		ReturnType< $mol_string['keyboard'] >
 	>
-	type $mol_string__enter__80P0IDSH = $mol_type_enforce<
+	type $mol_string__enter__L1VDQ1HD = $mol_type_enforce<
 		ReturnType< $mol_search['enter'] >
 		,
 		ReturnType< $mol_string['enter'] >
 	>
-	type $mol_button_minor__hint__4OQHSSAN = $mol_type_enforce<
+	type $mol_button_minor__hint__0QHK7GGV = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_button_minor['hint'] >
 	>
-	type $mol_button_minor__click__DMA5JX6R = $mol_type_enforce<
+	type $mol_button_minor__click__J7I27FNC = $mol_type_enforce<
 		ReturnType< $mol_search['clear'] >
 		,
 		ReturnType< $mol_button_minor['click'] >
 	>
-	type $mol_button_minor__sub__82XMCZPQ = $mol_type_enforce<
+	type $mol_button_minor__sub__HHNXL5TS = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_button_minor['sub'] >
 	>
-	type $mol_list__rows__5P0WS35K = $mol_type_enforce<
+	type $mol_list__rows__RGSJZNSD = $mol_type_enforce<
 		ReturnType< $mol_search['menu_items'] >
 		,
 		ReturnType< $mol_list['rows'] >
 	>
-	type $mol_dimmer__haystack__ALZF86UQ = $mol_type_enforce<
+	type $mol_dimmer__haystack__46006PO3 = $mol_type_enforce<
 		ReturnType< $mol_search['suggest_label'] >
 		,
 		ReturnType< $mol_dimmer['haystack'] >
 	>
-	type $mol_dimmer__needle__JNHVCKWM = $mol_type_enforce<
+	type $mol_dimmer__needle__3QQZIQZI = $mol_type_enforce<
 		ReturnType< $mol_search['query'] >
 		,
 		ReturnType< $mol_dimmer['needle'] >
 	>
-	type $mol_search_plugins__BH6XHL9K = $mol_type_enforce<
+	type $mol_search_plugins__G9GXW1JS = $mol_type_enforce<
 		ReturnType< $mol_pop['plugins'] >[number]
 		,
 		$mol_plugin
 	>
-	type $mol_view__sub__9NQS8BYL = $mol_type_enforce<
+	type $mol_view__sub__ROF9MXWV = $mol_type_enforce<
 		ReturnType< $mol_search['anchor_content'] >
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_button_minor__click__YKJTYYM5 = $mol_type_enforce<
+	type $mol_button_minor__click__775S4IXZ = $mol_type_enforce<
 		ReturnType< $mol_search['suggest_select'] >
 		,
 		ReturnType< $mol_button_minor['click'] >
 	>
-	type $mol_button_minor__sub__50CQJJOC = $mol_type_enforce<
+	type $mol_button_minor__sub__DSYSCHG4 = $mol_type_enforce<
 		ReturnType< $mol_search['suggest_content'] >
 		,
 		ReturnType< $mol_button_minor['sub'] >
@@ -2209,57 +2107,57 @@ declare namespace $ {
 
 declare namespace $ {
 
-	type $mol_view__dom_name__WOCI4V13 = $mol_type_enforce<
+	type $mol_view__dom_name__0OQXVLJ1 = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_view['dom_name'] >
 	>
-	type $mol_view__sub__OSO7IFJI = $mol_type_enforce<
+	type $mol_view__sub__AMPN0X04 = $mol_type_enforce<
 		ReturnType< $mol_page['title_content'] >
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_view__sub__D6INTKL8 = $mol_type_enforce<
+	type $mol_view__sub__TV0S3ZRH = $mol_type_enforce<
 		ReturnType< $mol_page['tools'] >
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_view__minimal_height__6WW86TTA = $mol_type_enforce<
+	type $mol_view__minimal_height__NKQWA59Q = $mol_type_enforce<
 		number
 		,
 		ReturnType< $mol_view['minimal_height'] >
 	>
-	type $mol_view__dom_name__GZ9CIEQ4 = $mol_type_enforce<
+	type $mol_view__dom_name__GWQZFOOF = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_view['dom_name'] >
 	>
-	type $mol_view__sub__N5BCGRHJ = $mol_type_enforce<
+	type $mol_view__sub__MZHO9IXI = $mol_type_enforce<
 		ReturnType< $mol_page['head'] >
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_page_body_scroll_top__97S93ORW = $mol_type_enforce<
+	type $mol_page_body_scroll_top__9C5BOCVD = $mol_type_enforce<
 		Parameters< $mol_page['body_scroll_top'] >[0]
 		,
 		Parameters< ReturnType< $mol_page['Body'] >['scroll_top'] >[0]
 	>
-	type $mol_view__sub__F0PB2N04 = $mol_type_enforce<
+	type $mol_view__sub__74CKH7QL = $mol_type_enforce<
 		ReturnType< $mol_page['body'] >
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_scroll__sub__X6XBEU7S = $mol_type_enforce<
+	type $mol_scroll__sub__MKUIQ46C = $mol_type_enforce<
 		ReturnType< $mol_page['body_content'] >
 		,
 		ReturnType< $mol_scroll['sub'] >
 	>
-	type $mol_view__dom_name__23XL3LAW = $mol_type_enforce<
+	type $mol_view__dom_name__1YJR1Q0M = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_view['dom_name'] >
 	>
-	type $mol_view__sub__Z209J7MJ = $mol_type_enforce<
+	type $mol_view__sub__LN7R8Q7O = $mol_type_enforce<
 		ReturnType< $mol_page['foot'] >
 		,
 		ReturnType< $mol_view['sub'] >
@@ -2299,77 +2197,77 @@ declare namespace $ {
 
 declare namespace $ {
 
-	type $mol_search__query__U23NBSLH = $mol_type_enforce<
+	type $mol_search__query__MT6ABIIR = $mol_type_enforce<
 		ReturnType< $mol_book2_catalog['menu_filter'] >
 		,
 		ReturnType< $mol_search['query'] >
 	>
-	type $mol_dimmer__needle__GCYR8CRY = $mol_type_enforce<
+	type $mol_dimmer__needle__L9S12NM1 = $mol_type_enforce<
 		ReturnType< $mol_book2_catalog['menu_filter'] >
 		,
 		ReturnType< $mol_dimmer['needle'] >
 	>
-	type $mol_dimmer__haystack__26N9HUCN = $mol_type_enforce<
+	type $mol_dimmer__haystack__K946P676 = $mol_type_enforce<
 		ReturnType< $mol_book2_catalog['spread_title'] >
 		,
 		ReturnType< $mol_dimmer['haystack'] >
 	>
-	type $mol_link__arg__7LAJC9M7 = $mol_type_enforce<
+	type $mol_link__arg__HSWG4A2G = $mol_type_enforce<
 		ReturnType< $mol_book2_catalog['arg'] >
 		,
 		ReturnType< $mol_link['arg'] >
 	>
-	type $mol_link__sub__LQ7NIAH3 = $mol_type_enforce<
+	type $mol_link__sub__3UI9NHBZ = $mol_type_enforce<
 		ReturnType< $mol_book2_catalog['menu_link_content'] >
 		,
 		ReturnType< $mol_link['sub'] >
 	>
-	type $mol_list__rows__QYKFX3XK = $mol_type_enforce<
+	type $mol_list__rows__E2U9NXV4 = $mol_type_enforce<
 		ReturnType< $mol_book2_catalog['menu_links'] >
 		,
 		ReturnType< $mol_list['rows'] >
 	>
-	type $mol_page__title__RJMKO40Q = $mol_type_enforce<
+	type $mol_page__title__2M4I2K44 = $mol_type_enforce<
 		ReturnType< $mol_book2_catalog['menu_title'] >
 		,
 		ReturnType< $mol_page['title'] >
 	>
-	type $mol_page__Logo__MMQJAONW = $mol_type_enforce<
+	type $mol_page__Logo__HJOVYW3D = $mol_type_enforce<
 		ReturnType< $mol_book2_catalog['Menu_logo'] >
 		,
 		ReturnType< $mol_page['Logo'] >
 	>
-	type $mol_page__tools__HQ0AM84B = $mol_type_enforce<
+	type $mol_page__tools__ZJ6XQWAM = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_page['tools'] >
 	>
-	type $mol_page__head__PROTWVF0 = $mol_type_enforce<
+	type $mol_page__head__MD93A9E9 = $mol_type_enforce<
 		ReturnType< $mol_book2_catalog['menu_head'] >
 		,
 		ReturnType< $mol_page['head'] >
 	>
-	type $mol_page__body__79FCBVHP = $mol_type_enforce<
+	type $mol_page__body__LFT1D9FC = $mol_type_enforce<
 		ReturnType< $mol_book2_catalog['menu_body'] >
 		,
 		ReturnType< $mol_page['body'] >
 	>
-	type $mol_page__foot__4QFL97OK = $mol_type_enforce<
+	type $mol_page__foot__9PMVBNIV = $mol_type_enforce<
 		ReturnType< $mol_book2_catalog['menu_foot'] >
 		,
 		ReturnType< $mol_page['foot'] >
 	>
-	type $mol_link__arg__DXIGRI7V = $mol_type_enforce<
+	type $mol_link__arg__YH5X9YYU = $mol_type_enforce<
 		ReturnType< $mol_book2_catalog['spread_close_arg'] >
 		,
 		ReturnType< $mol_link['arg'] >
 	>
-	type $mol_link__hint__GEEPUY4U = $mol_type_enforce<
+	type $mol_link__hint__L1XLBKWZ = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_link['hint'] >
 	>
-	type $mol_link__sub__0O63CDR1 = $mol_type_enforce<
+	type $mol_link__sub__QOEBM37O = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_link['sub'] >
@@ -2462,7 +2360,7 @@ declare namespace $ {
 
 declare namespace $ {
 
-	type $mol_view__sub__BDLMUTJA = $mol_type_enforce<
+	type $mol_view__sub__XV8Y37AF = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
@@ -2551,109 +2449,7 @@ declare namespace $ {
 //# sourceMappingURL=state.view.tree.d.ts.map
 declare namespace $.$$ {
     class $mol_keyboard_state extends $.$mol_keyboard_state {
-        key(): {
-            readonly [x: number]: ((state?: boolean) => boolean) | undefined;
-            readonly backspace?: ((state?: boolean) => boolean) | undefined;
-            readonly tab?: ((state?: boolean) => boolean) | undefined;
-            readonly enter?: ((state?: boolean) => boolean) | undefined;
-            readonly shift?: ((state?: boolean) => boolean) | undefined;
-            readonly ctrl?: ((state?: boolean) => boolean) | undefined;
-            readonly alt?: ((state?: boolean) => boolean) | undefined;
-            readonly pause?: ((state?: boolean) => boolean) | undefined;
-            readonly capsLock?: ((state?: boolean) => boolean) | undefined;
-            readonly escape?: ((state?: boolean) => boolean) | undefined;
-            readonly space?: ((state?: boolean) => boolean) | undefined;
-            readonly pageUp?: ((state?: boolean) => boolean) | undefined;
-            readonly pageDown?: ((state?: boolean) => boolean) | undefined;
-            readonly end?: ((state?: boolean) => boolean) | undefined;
-            readonly home?: ((state?: boolean) => boolean) | undefined;
-            readonly left?: ((state?: boolean) => boolean) | undefined;
-            readonly up?: ((state?: boolean) => boolean) | undefined;
-            readonly right?: ((state?: boolean) => boolean) | undefined;
-            readonly down?: ((state?: boolean) => boolean) | undefined;
-            readonly insert?: ((state?: boolean) => boolean) | undefined;
-            readonly delete?: ((state?: boolean) => boolean) | undefined;
-            readonly key0?: ((state?: boolean) => boolean) | undefined;
-            readonly key1?: ((state?: boolean) => boolean) | undefined;
-            readonly key2?: ((state?: boolean) => boolean) | undefined;
-            readonly key3?: ((state?: boolean) => boolean) | undefined;
-            readonly key4?: ((state?: boolean) => boolean) | undefined;
-            readonly key5?: ((state?: boolean) => boolean) | undefined;
-            readonly key6?: ((state?: boolean) => boolean) | undefined;
-            readonly key7?: ((state?: boolean) => boolean) | undefined;
-            readonly key8?: ((state?: boolean) => boolean) | undefined;
-            readonly key9?: ((state?: boolean) => boolean) | undefined;
-            readonly A?: ((state?: boolean) => boolean) | undefined;
-            readonly B?: ((state?: boolean) => boolean) | undefined;
-            readonly C?: ((state?: boolean) => boolean) | undefined;
-            readonly D?: ((state?: boolean) => boolean) | undefined;
-            readonly E?: ((state?: boolean) => boolean) | undefined;
-            readonly F?: ((state?: boolean) => boolean) | undefined;
-            readonly G?: ((state?: boolean) => boolean) | undefined;
-            readonly H?: ((state?: boolean) => boolean) | undefined;
-            readonly I?: ((state?: boolean) => boolean) | undefined;
-            readonly J?: ((state?: boolean) => boolean) | undefined;
-            readonly K?: ((state?: boolean) => boolean) | undefined;
-            readonly L?: ((state?: boolean) => boolean) | undefined;
-            readonly M?: ((state?: boolean) => boolean) | undefined;
-            readonly N?: ((state?: boolean) => boolean) | undefined;
-            readonly O?: ((state?: boolean) => boolean) | undefined;
-            readonly P?: ((state?: boolean) => boolean) | undefined;
-            readonly Q?: ((state?: boolean) => boolean) | undefined;
-            readonly R?: ((state?: boolean) => boolean) | undefined;
-            readonly S?: ((state?: boolean) => boolean) | undefined;
-            readonly T?: ((state?: boolean) => boolean) | undefined;
-            readonly U?: ((state?: boolean) => boolean) | undefined;
-            readonly V?: ((state?: boolean) => boolean) | undefined;
-            readonly W?: ((state?: boolean) => boolean) | undefined;
-            readonly X?: ((state?: boolean) => boolean) | undefined;
-            readonly Y?: ((state?: boolean) => boolean) | undefined;
-            readonly Z?: ((state?: boolean) => boolean) | undefined;
-            readonly metaLeft?: ((state?: boolean) => boolean) | undefined;
-            readonly metaRight?: ((state?: boolean) => boolean) | undefined;
-            readonly select?: ((state?: boolean) => boolean) | undefined;
-            readonly numpad0?: ((state?: boolean) => boolean) | undefined;
-            readonly numpad1?: ((state?: boolean) => boolean) | undefined;
-            readonly numpad2?: ((state?: boolean) => boolean) | undefined;
-            readonly numpad3?: ((state?: boolean) => boolean) | undefined;
-            readonly numpad4?: ((state?: boolean) => boolean) | undefined;
-            readonly numpad5?: ((state?: boolean) => boolean) | undefined;
-            readonly numpad6?: ((state?: boolean) => boolean) | undefined;
-            readonly numpad7?: ((state?: boolean) => boolean) | undefined;
-            readonly numpad8?: ((state?: boolean) => boolean) | undefined;
-            readonly numpad9?: ((state?: boolean) => boolean) | undefined;
-            readonly multiply?: ((state?: boolean) => boolean) | undefined;
-            readonly add?: ((state?: boolean) => boolean) | undefined;
-            readonly subtract?: ((state?: boolean) => boolean) | undefined;
-            readonly decimal?: ((state?: boolean) => boolean) | undefined;
-            readonly divide?: ((state?: boolean) => boolean) | undefined;
-            readonly F1?: ((state?: boolean) => boolean) | undefined;
-            readonly F2?: ((state?: boolean) => boolean) | undefined;
-            readonly F3?: ((state?: boolean) => boolean) | undefined;
-            readonly F4?: ((state?: boolean) => boolean) | undefined;
-            readonly F5?: ((state?: boolean) => boolean) | undefined;
-            readonly F6?: ((state?: boolean) => boolean) | undefined;
-            readonly F7?: ((state?: boolean) => boolean) | undefined;
-            readonly F8?: ((state?: boolean) => boolean) | undefined;
-            readonly F9?: ((state?: boolean) => boolean) | undefined;
-            readonly F10?: ((state?: boolean) => boolean) | undefined;
-            readonly F11?: ((state?: boolean) => boolean) | undefined;
-            readonly F12?: ((state?: boolean) => boolean) | undefined;
-            readonly numLock?: ((state?: boolean) => boolean) | undefined;
-            readonly scrollLock?: ((state?: boolean) => boolean) | undefined;
-            readonly semicolon?: ((state?: boolean) => boolean) | undefined;
-            readonly equals?: ((state?: boolean) => boolean) | undefined;
-            readonly comma?: ((state?: boolean) => boolean) | undefined;
-            readonly dash?: ((state?: boolean) => boolean) | undefined;
-            readonly period?: ((state?: boolean) => boolean) | undefined;
-            readonly forwardSlash?: ((state?: boolean) => boolean) | undefined;
-            readonly graveAccent?: ((state?: boolean) => boolean) | undefined;
-            readonly bracketOpen?: ((state?: boolean) => boolean) | undefined;
-            readonly slashBack?: ((state?: boolean) => boolean) | undefined;
-            readonly slashBackLeft?: ((state?: boolean) => boolean) | undefined;
-            readonly bracketClose?: ((state?: boolean) => boolean) | undefined;
-            readonly quoteSingle?: ((state?: boolean) => boolean) | undefined;
-        };
+        key(): { [key in keyof typeof $mol_keyboard_code]?: (state?: boolean) => boolean; };
         down(event?: KeyboardEvent): void;
         up(event?: KeyboardEvent): void;
     }
@@ -2661,27 +2457,27 @@ declare namespace $.$$ {
 
 declare namespace $ {
 
-	type $mol_check__checked__3L912600 = $mol_type_enforce<
+	type $mol_check__checked__STUY6Q4P = $mol_type_enforce<
 		ReturnType< $mol_check_list['option_checked'] >
 		,
 		ReturnType< $mol_check['checked'] >
 	>
-	type $mol_check__label__AMXA2LAK = $mol_type_enforce<
+	type $mol_check__label__TXZ73G54 = $mol_type_enforce<
 		ReturnType< $mol_check_list['option_label'] >
 		,
 		ReturnType< $mol_check['label'] >
 	>
-	type $mol_check__enabled__3BR4WGQY = $mol_type_enforce<
+	type $mol_check__enabled__VQ6BCE9B = $mol_type_enforce<
 		ReturnType< $mol_check_list['option_enabled'] >
 		,
 		ReturnType< $mol_check['enabled'] >
 	>
-	type $mol_check__hint__QCHET0VS = $mol_type_enforce<
+	type $mol_check__hint__CW76F4AF = $mol_type_enforce<
 		ReturnType< $mol_check_list['option_hint'] >
 		,
 		ReturnType< $mol_check['hint'] >
 	>
-	type $mol_check__minimal_height__ELZCLNFM = $mol_type_enforce<
+	type $mol_check__minimal_height__MY1IO2UQ = $mol_type_enforce<
 		number
 		,
 		ReturnType< $mol_check['minimal_height'] >
@@ -2752,14 +2548,14 @@ declare namespace $.$$ {
 
 declare namespace $ {
 
-	type $mol_gallery__style__I0MNSJ1V = $mol_type_enforce<
+	type $mol_gallery__style__B4WM5Q9F = $mol_type_enforce<
 		({ 
 			'flexGrow': ReturnType< $mol_gallery['side_size'] >,
 		}) 
 		,
 		ReturnType< $mol_gallery['style'] >
 	>
-	type $mol_gallery__items__K4T7RCC1 = $mol_type_enforce<
+	type $mol_gallery__items__B6II3DP0 = $mol_type_enforce<
 		ReturnType< $mol_gallery['side_items'] >
 		,
 		ReturnType< $mol_gallery['items'] >
@@ -2788,32 +2584,32 @@ declare namespace $ {
 
 declare namespace $ {
 
-	type $mol_view__minimal_width__TROPOQ5C = $mol_type_enforce<
+	type $mol_view__minimal_width__22Z0EFFN = $mol_type_enforce<
 		number
 		,
 		ReturnType< $mol_view['minimal_width'] >
 	>
-	type $mol_view__minimal_height__AYJX55XR = $mol_type_enforce<
+	type $mol_view__minimal_height__3FZCAP97 = $mol_type_enforce<
 		number
 		,
 		ReturnType< $mol_view['minimal_height'] >
 	>
-	type $mol_view__sub__94ABFTUT = $mol_type_enforce<
+	type $mol_view__sub__NPFC0X0P = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
 	>
-	type $mol_view__minimal_width__5B7ABG3O = $mol_type_enforce<
+	type $mol_view__minimal_width__N23167PU = $mol_type_enforce<
 		number
 		,
 		ReturnType< $mol_view['minimal_width'] >
 	>
-	type $mol_view__minimal_height__SVUNIFMF = $mol_type_enforce<
+	type $mol_view__minimal_height__0C7U9KYO = $mol_type_enforce<
 		number
 		,
 		ReturnType< $mol_view['minimal_height'] >
 	>
-	type $mol_view__sub__5KXJO3QY = $mol_type_enforce<
+	type $mol_view__sub__CJVJ4400 = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_view['sub'] >
@@ -2910,7 +2706,7 @@ declare namespace $ {
 //# sourceMappingURL=box.view.tree.d.ts.map
 declare namespace $ {
 
-	type $mol_keyboard_state__key__FB37HVYZ = $mol_type_enforce<
+	type $mol_keyboard_state__key__P002XF66 = $mol_type_enforce<
 		({ 
 			key1( next?: ReturnType< $koplenov_infinity_marker['select_merge'] > ): ReturnType< $koplenov_infinity_marker['select_merge'] >,
 			key2( next?: ReturnType< $koplenov_infinity_marker['select_delete'] > ): ReturnType< $koplenov_infinity_marker['select_delete'] >,
@@ -2920,82 +2716,82 @@ declare namespace $ {
 		,
 		ReturnType< $mol_keyboard_state['key'] >
 	>
-	type $mol_switch__value__WNUEXJM7 = $mol_type_enforce<
+	type $mol_switch__value__NQOI3D9H = $mol_type_enforce<
 		ReturnType< $koplenov_infinity_marker['color'] >
 		,
 		ReturnType< $mol_switch['value'] >
 	>
-	type $mol_switch__options__X1C1KJ6M = $mol_type_enforce<
+	type $mol_switch__options__L7GNVYIX = $mol_type_enforce<
 		ReturnType< $koplenov_infinity_marker['formats'] >
 		,
 		ReturnType< $mol_switch['options'] >
 	>
-	type $mol_switch__value__1TSJBX19 = $mol_type_enforce<
+	type $mol_switch__value__19NY178I = $mol_type_enforce<
 		ReturnType< $koplenov_infinity_marker['marker'] >
 		,
 		ReturnType< $mol_switch['value'] >
 	>
-	type $mol_switch__options__DIM59AZX = $mol_type_enforce<
+	type $mol_switch__options__9KPM0L21 = $mol_type_enforce<
 		ReturnType< $koplenov_infinity_marker['markers'] >
 		,
 		ReturnType< $mol_switch['options'] >
 	>
-	type $mol_gallery__minimal_width__XTMXDK0V = $mol_type_enforce<
+	type $mol_gallery__minimal_width__BHIXA8YA = $mol_type_enforce<
 		number
 		,
 		ReturnType< $mol_gallery['minimal_width'] >
 	>
-	type $mol_gallery__minimal_height__NIR967JV = $mol_type_enforce<
+	type $mol_gallery__minimal_height__O33X867Z = $mol_type_enforce<
 		number
 		,
 		ReturnType< $mol_gallery['minimal_height'] >
 	>
-	type $mol_gallery__items__VNNTM9XV = $mol_type_enforce<
+	type $mol_gallery__items__D35C7ZUG = $mol_type_enforce<
 		ReturnType< $koplenov_infinity_marker['Pics'] >
 		,
 		ReturnType< $mol_gallery['items'] >
 	>
-	type $mol_infinite__before__QZDIVRQY = $mol_type_enforce<
+	type $mol_infinite__before__RGTEMFI2 = $mol_type_enforce<
 		ReturnType< $koplenov_infinity_marker['before'] >
 		,
 		ReturnType< $mol_infinite['before'] >
 	>
-	type $mol_infinite__after__O5B7W0BT = $mol_type_enforce<
+	type $mol_infinite__after__BLQPDV0O = $mol_type_enforce<
 		ReturnType< $koplenov_infinity_marker['after'] >
 		,
 		ReturnType< $mol_infinite['after'] >
 	>
-	type $mol_infinite__Row__U2B8EB5I = $mol_type_enforce<
+	type $mol_infinite__Row__SE8R3ZJE = $mol_type_enforce<
 		ReturnType< $koplenov_infinity_marker['Gallery'] >
 		,
 		ReturnType< $mol_infinite['Row'] >
 	>
-	type $mol_image__natural_width__NK2TMP93 = $mol_type_enforce<
+	type $mol_image__natural_width__7KBBL3SS = $mol_type_enforce<
 		number
 		,
 		ReturnType< $mol_image['natural_width'] >
 	>
-	type $mol_image__natural_height__6K1BHS74 = $mol_type_enforce<
+	type $mol_image__natural_height__PMUYMN1J = $mol_type_enforce<
 		number
 		,
 		ReturnType< $mol_image['natural_height'] >
 	>
-	type $mol_image__uri__G9XJGVKU = $mol_type_enforce<
+	type $mol_image__uri__RJAJ1TKV = $mol_type_enforce<
 		ReturnType< $koplenov_infinity_marker['image'] >
 		,
 		ReturnType< $mol_image['uri'] >
 	>
-	type $koplenov_infinity_marker_box__checked__7C96Y9C6 = $mol_type_enforce<
+	type $koplenov_infinity_marker_box__checked__G58BT380 = $mol_type_enforce<
 		ReturnType< $koplenov_infinity_marker['checked'] >
 		,
 		ReturnType< $koplenov_infinity_marker_box['checked'] >
 	>
-	type $koplenov_infinity_marker_box__marked__DE7THMZB = $mol_type_enforce<
+	type $koplenov_infinity_marker_box__marked__OMOVBOUJ = $mol_type_enforce<
 		ReturnType< $koplenov_infinity_marker['marked'] >
 		,
 		ReturnType< $koplenov_infinity_marker_box['marked'] >
 	>
-	type $mol_stack__sub__VRRW72LR = $mol_type_enforce<
+	type $mol_stack__sub__YFW5F2YG = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_stack['sub'] >
@@ -3070,52 +2866,52 @@ declare namespace $ {
 
 declare namespace $ {
 
-	type $mol_button_minor__title__ZHTZNUSV = $mol_type_enforce<
+	type $mol_button_minor__title__4DFXSI6C = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_button_minor['title'] >
 	>
-	type $mol_button_minor__click__5M5SI1QO = $mol_type_enforce<
+	type $mol_button_minor__click__5STBBEKK = $mol_type_enforce<
 		ReturnType< $koplenov_infinity_preview['download_merge'] >
 		,
 		ReturnType< $mol_button_minor['click'] >
 	>
-	type $mol_gallery__items__N2J8WYSA = $mol_type_enforce<
+	type $mol_gallery__items__MEJKHA58 = $mol_type_enforce<
 		ReturnType< $koplenov_infinity_preview['Pics_merge'] >
 		,
 		ReturnType< $mol_gallery['items'] >
 	>
-	type $mol_button_minor__title__VF1FQU4W = $mol_type_enforce<
+	type $mol_button_minor__title__CJU0G0OR = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_button_minor['title'] >
 	>
-	type $mol_button_minor__click__NUGSLY6C = $mol_type_enforce<
+	type $mol_button_minor__click__KBCV42TP = $mol_type_enforce<
 		ReturnType< $koplenov_infinity_preview['download_delete'] >
 		,
 		ReturnType< $mol_button_minor['click'] >
 	>
-	type $mol_gallery__items__KJ02LMHT = $mol_type_enforce<
+	type $mol_gallery__items__ZDVQB3D4 = $mol_type_enforce<
 		ReturnType< $koplenov_infinity_preview['Pics_delete'] >
 		,
 		ReturnType< $mol_gallery['items'] >
 	>
-	type $mol_list__rows__SJL0MYST = $mol_type_enforce<
+	type $mol_list__rows__09YN8TSG = $mol_type_enforce<
 		readonly(any)[]
 		,
 		ReturnType< $mol_list['rows'] >
 	>
-	type $mol_image__natural_width__ITZD003M = $mol_type_enforce<
+	type $mol_image__natural_width__65X95M1A = $mol_type_enforce<
 		number
 		,
 		ReturnType< $mol_image['natural_width'] >
 	>
-	type $mol_image__natural_height__1Q4ZHCWT = $mol_type_enforce<
+	type $mol_image__natural_height__7OBCX574 = $mol_type_enforce<
 		number
 		,
 		ReturnType< $mol_image['natural_height'] >
 	>
-	type $mol_image__uri__3AUUGKSF = $mol_type_enforce<
+	type $mol_image__uri__9BEZ5T3Y = $mol_type_enforce<
 		ReturnType< $koplenov_infinity_preview['image'] >
 		,
 		ReturnType< $mol_image['uri'] >
@@ -3157,12 +2953,12 @@ declare namespace $.$$ {
 
 declare namespace $ {
 
-	type $mol_button_minor__title__PV5M8CZQ = $mol_type_enforce<
+	type $mol_button_minor__title__SQ883SJY = $mol_type_enforce<
 		string
 		,
 		ReturnType< $mol_button_minor['title'] >
 	>
-	type $mol_button_minor__click__PLLOJSNQ = $mol_type_enforce<
+	type $mol_button_minor__click__ZPVSP6OP = $mol_type_enforce<
 		ReturnType< $koplenov_infinity_settings['clear_local_storage'] >
 		,
 		ReturnType< $mol_button_minor['click'] >
@@ -3187,17 +2983,17 @@ declare namespace $.$$ {
 
 declare namespace $ {
 
-	type $koplenov_infinity_marker__add_tools__XDQ8UA4G = $mol_type_enforce<
+	type $koplenov_infinity_marker__add_tools__9LNV8LPY = $mol_type_enforce<
 		ReturnType< $koplenov_infinity['Spread_close'] >
 		,
 		ReturnType< $koplenov_infinity_marker['add_tools'] >
 	>
-	type $koplenov_infinity_preview__add_tools__3KDR609E = $mol_type_enforce<
+	type $koplenov_infinity_preview__add_tools__X6QYBM4Z = $mol_type_enforce<
 		ReturnType< $koplenov_infinity['Spread_close'] >
 		,
 		ReturnType< $koplenov_infinity_preview['add_tools'] >
 	>
-	type $koplenov_infinity_settings__add_tools__8SIEETIX = $mol_type_enforce<
+	type $koplenov_infinity_settings__add_tools__N3K6BP0N = $mol_type_enforce<
 		ReturnType< $koplenov_infinity['Spread_close'] >
 		,
 		ReturnType< $koplenov_infinity_settings['add_tools'] >
