@@ -166,6 +166,7 @@
     "$mol_match",
     "$mol_theme_auto",
     "$mol_lights",
+    "$mol_media",
     "$mol_lights_toggle",
     "$mol_check_icon",
     "$mol_check",
