@@ -7033,7 +7033,7 @@ var $;
             }
             menu_links() {
                 return this.spread_ids_filtered()
-                    .map(spread => this.Menu_link(spread));
+                    .map(spread => this.Menu_item(spread));
             }
             spread_ids_filtered() {
                 return this.spread_ids()
@@ -7108,6 +7108,18 @@ var $;
                     grow: 0,
                 },
                 alignSelf: 'stretch',
+            },
+            Menu_item: {
+                align: {
+                    items: 'flex-start',
+                },
+            },
+            Menu_link: {
+                flex: {
+                    grow: 1,
+                    shrink: 1,
+                    wrap: 'wrap',
+                },
             },
         });
     })($$ = $.$$ || ($.$$ = {}));
